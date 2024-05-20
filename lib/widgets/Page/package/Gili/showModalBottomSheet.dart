@@ -40,7 +40,7 @@ class Tes extends StatelessWidget {
                             topLeft: Radius.circular(36),
                             topRight: Radius.circular(36),
                           ),
-                          color: primaryColor,
+                          color: whiteColor1,
                         ),
                         child: Column(
                           children: [

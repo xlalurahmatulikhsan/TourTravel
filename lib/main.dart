@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:slicing/theme/theme.dart';
-import 'package:slicing/widgets/Page/package/Gili/showModalBottomSheet.dart';
 import 'package:slicing/widgets/auth/splash.dart';
 
 void main() {
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: primaryColor),
-      home: Tes(),
+      home: Splash(),
     );
   }
 }
