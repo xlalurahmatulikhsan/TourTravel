@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:slicing/theme/theme.dart';
-import 'package:slicing/widgets/Page/package/Gili/cobaWidgets.dart';
-// import 'package:slicing/widgets/Page/package/Gili/cobaWidgets.dart';
-// import 'package:slicing/widgets/Page/package/Gili/showModalBottomSheet.dart';
 import 'package:slicing/widgets/auth/splash.dart';
 
 void main() {

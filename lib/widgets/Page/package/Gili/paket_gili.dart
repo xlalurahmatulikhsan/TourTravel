@@ -1,7 +1,8 @@
 // import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'cobaWidgets.dart';
+import 'package:slicing/widgets/Page/package/Gili/detailPesanan.dart';
+import 'detail.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:slicing/theme/theme.dart';
@@ -26,16 +27,19 @@ class _PaketGili_1State extends State<PaketGili_1>
 
   var paketGili = [
     {
-      'waktu': '3 Hari 2 Malam',
+      'paket': '3 Hari 2 Malam',
       'harga': 'IDR 3.320.000/pax',
+      'tanggal': '21 mei'
     },
     {
-      'waktu': '2 Hari 1 Malam',
+      'paket': '2 Hari 1 Malam',
       'harga': 'IDR 2.320.000/pax',
+      'tanggal': '21 mei'
     },
     {
-      'waktu': '1 Hari',
+      'paket': '1 Hari',
       'harga': 'IDR 1.320.000/pax',
+      'tanggal': '21 mei',
     }
   ];
 
@@ -303,7 +307,7 @@ Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara 
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Paket Wisata Gili Terawangan \n${paketGili[index]['waktu']}',
+                                  'Paket Wisata Gili Terawangan \n${paketGili[index]['paket']}',
                                   style: blackTextStyle.copyWith(
                                     fontWeight: semiBold,
                                     fontSize: 12,
@@ -320,8 +324,8 @@ Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara 
                                   onTap: () {
                                     showDraggableSheet(
                                       context,
-                                      paketGili[index]['waktu']!,
-                                      paketGili[index]['waktu']!,
+                                      paketGili[index]['paket']!,
+                                      paketGili[index]['harga']!,
                                       include[index],
                                     );
                                   },
@@ -348,7 +352,14 @@ Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara 
                                     color: primaryColor,
                                   ),
                                   child: TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      showDetailPesanan(
+                                        context,
+                                        paketGili[index]['paket']!,
+                                        paketGili[index]['harga']!,
+                                        paketGili[index]['tanggal']!,
+                                      );
+                                    },
                                     child: Text(
                                       'Pilih Paket',
                                       style: whiteTextStyle.copyWith(

@@ -78,7 +78,7 @@ import 'package:gap/gap.dart';
 import 'package:slicing/theme/theme.dart';
 
 void showDraggableSheet(
-    BuildContext context, String waktu, String harga, List includeItem) {
+    BuildContext context, String paket, String harga, List includeItem) {
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.transparent,
@@ -120,7 +120,7 @@ void showDraggableSheet(
                         ),
                         Gap(34),
                         Text(
-                          'Paket Wisata Gili Terawangan $waktu',
+                          'Paket Wisata Gili Terawangan $paket',
                           style: blackTextStyle.copyWith(
                             fontWeight: semiBold,
                             fontSize: 14,
