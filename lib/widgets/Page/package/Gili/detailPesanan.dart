@@ -96,7 +96,9 @@ void showDetailPesanan(
                                 fontSize: 12,
                               ),
                             ),
+                            Gap(6),
                             Image.asset('images/crossLine.png'),
+                            Gap(6),
                             Text(
                               'Gratis umur 3 tahun ke bawah \nDiscount 50% umur 4-9 tahun',
                               style: greenTextStyle.copyWith(
@@ -110,6 +112,7 @@ void showDetailPesanan(
                     ),
                     Gap(14),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Tanggal Kunjungan',
@@ -131,42 +134,28 @@ void showDetailPesanan(
                       ],
                     ),
                     Gap(8),
-                    SizedBox(
-                      height: 30,
-                      child: ListView.builder(
-                        itemCount: tanggal.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 6,
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  color: whiteColor1,
-                                  border: Border.all(
-                                    color:
-                                        tanggal == 0 ? primaryColor : greyColor,
-                                    width: 2,
-                                  )),
-                              child: Text(
-                                tanggal,
-                                style: tanggal == 0
-                                    ? greenTextStyle.copyWith(
-                                        fontWeight: medium, fontSize: 12)
-                                    : greyTextStyle.copyWith(
-                                        fontWeight: medium,
-                                        fontSize: 12,
-                                      ),
-                              ),
-                            ),
-                          );
-                        },
+                    Center(
+                      child: Container(
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          border: Border.all(
+                            color: greyColor,
+                            width: 2,
+                          ),
+                        ),
+                        child: Text(
+                          tanggal,
+                          style: greyTextStyle.copyWith(
+                            fontWeight: medium,
+                            fontSize: 12,
+                          ),
+                        ),
                       ),
                     ),
                     Gap(14),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Pilihan Paket',
@@ -179,13 +168,85 @@ void showDetailPesanan(
                           onPressed: () {},
                           icon: Icon(
                             Icons.arrow_forward_ios,
-                            size: 5,
+                            size: 10,
                             color: blackColor,
                           ),
                         ),
                       ],
                     ),
+                    Gap(6),
+                    Container(
+                      width: double.infinity,
+                      height: 66,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        color: whiteColor2,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Tour Saja (Tanpa Hotel)',
+                              style: blackTextStyle.copyWith(
+                                fontWeight: medium,
+                                fontSize: 12,
+                              ),
+                            ),
+                            Gap(6),
+                            Image.asset('images/crossLine.png'),
+                            Gap(6),
+                            Text(
+                              'Mulai Dari $harga',
+                              style: greyTextStyle.copyWith(
+                                fontWeight: medium,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Gap(14),
+                    Text(
+                      'Jumlah Paket',
+                      style: blackTextStyle.copyWith(
+                        fontWeight: medium,
+                        fontSize: 12,
+                      ),
+                    ),
                     Gap(8),
+                    Container(
+                      width: double.infinity,
+                      height: 42,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(
+                          color: greyColor,
+                          width: 2,
+                        ),
+                      ),
+                    ),
+                    Gap(68),
+                    Container(
+                      height: 30,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        color: primaryColor,
+                      ),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Pesan',
+                          style: whiteTextStyle.copyWith(
+                            fontWeight: medium,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
