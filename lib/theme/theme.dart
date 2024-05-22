@@ -26,3 +26,4 @@ TextStyle greenTextStyle = GoogleFonts.poppins(color: primaryColor);
 TextStyle greyTextStyle = GoogleFonts.poppins(color: greyColor);
 TextStyle blackTextStyle = GoogleFonts.poppins(color: blackColor);
 TextStyle priceTextStyle = GoogleFonts.poppins(color: priceColor);
+TextStyle redTextStyle = GoogleFonts.poppins(color: redColor);

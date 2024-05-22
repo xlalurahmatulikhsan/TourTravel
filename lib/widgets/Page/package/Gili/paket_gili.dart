@@ -1,7 +1,10 @@
 // import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:slicing/widgets/Page/package/Gili/detailPesanan.dart';
+// import 'package:slicing/main.dart';
+// import 'package:slicing/widgets/Page/package/Gili/detailPesanan.dart';
+import 'package:slicing/widgets/controller/paket.dart';
+
 import 'detail.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -9,7 +12,9 @@ import 'package:slicing/theme/theme.dart';
 import 'package:slicing/widgets/Page/home.dart';
 
 class PaketGili_1 extends StatefulWidget {
-  const PaketGili_1({super.key});
+  final PackageController controller = PackageController();
+
+  PaketGili_1({super.key});
 
   @override
   State<PaketGili_1> createState() => _PaketGili_1State();
@@ -28,17 +33,17 @@ class _PaketGili_1State extends State<PaketGili_1>
   var paketGili = [
     {
       'paket': '3 Hari 2 Malam',
-      'harga': 'IDR 3.320.000/pax',
-      'tanggal': '21 mei'
+      'harga': '3320000',
+      'tanggal': '21 mei',
     },
     {
       'paket': '2 Hari 1 Malam',
-      'harga': 'IDR 2.320.000/pax',
-      'tanggal': '21 mei'
+      'harga': '2320000',
+      'tanggal': '21 mei',
     },
     {
       'paket': '1 Hari',
-      'harga': 'IDR 1.320.000/pax',
+      'harga': '1320000',
       'tanggal': '21 mei',
     }
   ];
@@ -345,6 +350,7 @@ Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara 
                                     fontSize: 12,
                                   ),
                                 ),
+                                Text('2'),
                                 Container(
                                   height: 28,
                                   decoration: BoxDecoration(
@@ -352,14 +358,7 @@ Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara 
                                     color: primaryColor,
                                   ),
                                   child: TextButton(
-                                    onPressed: () {
-                                      showDetailPesanan(
-                                        context,
-                                        paketGili[index]['paket']!,
-                                        paketGili[index]['harga']!,
-                                        paketGili[index]['tanggal']!,
-                                      );
-                                    },
+                                    onPressed: () {},
                                     child: Text(
                                       'Pilih Paket',
                                       style: whiteTextStyle.copyWith(
