@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:slicing/theme/theme.dart';
 import 'package:slicing/widgets/Page/home.dart';
+import 'package:slicing/widgets/Page/package/Gili/detail.dart';
 import 'package:slicing/widgets/controller/controller.dart';
 
 class WisataPage extends StatelessWidget {
@@ -77,7 +78,7 @@ class WisataPage extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                item.ratingTempat.toString(),
+                                item.averageRating.toString(),
                                 style: blackTextStyle.copyWith(
                                   fontWeight: semiBold,
                                   fontSize: 14,
@@ -257,14 +258,24 @@ class WisataPage extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
-                                        item.paketan,
-                                        style: blackTextStyle.copyWith(
-                                          fontWeight: semiBold,
-                                          fontSize: 12,
+                                      Container(
+                                        width: 140,
+                                        child: Text(
+                                          item.paketan,
+                                          style: blackTextStyle.copyWith(
+                                            fontWeight: semiBold,
+                                            fontSize: 12,
+                                          ),
                                         ),
                                       ),
                                       GestureDetector(
+                                        onTap: () {
+                                          showDraggableSheet(
+                                            context,
+                                            item.paketan,
+                                            item.price.toString(),
+                                          );
+                                        },
                                         child: Text(
                                           'Detail',
                                           style: greenTextStyle.copyWith(
@@ -350,7 +361,7 @@ class WisataPage extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      item.ratingTempat.toString(),
+                                      item.averageRating.toString(),
                                       style: blackTextStyle.copyWith(
                                         fontWeight: medium,
                                         fontSize: 24,

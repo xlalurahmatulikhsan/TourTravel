@@ -12,12 +12,12 @@ class Item {
     this.review,
   );
 }
-
-class Wisata {
+ 
+class Wisata { 
   String namaTempat;
   String image; 
   String lokasi;
-  double ratingTempat;
+  double averageRating;
   String deskripsi;
   String ekspresi;
 
@@ -25,7 +25,7 @@ class Wisata {
     this.namaTempat,
     this.image,
     this.lokasi,
-    this.ratingTempat,
+    this.averageRating, 
     this.deskripsi, 
     this.ekspresi,
   );

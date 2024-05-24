@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:slicing/theme/theme.dart';
-// import 'package:slicing/widgets/controller/package_controller.dart';
 import 'package:slicing/widgets/controller/controller.dart';
 
 void showDraggableSheet(
-    BuildContext context, String paket, String harga, List includeItem) {
+  BuildContext context,
+  String paket,
+  String harga,
+) {
   final PackageController controller = Get.put(PackageController());
 
   showModalBottomSheet(
@@ -50,14 +52,14 @@ void showDraggableSheet(
                         ),
                         Gap(34),
                         Text(
-                          'Paket Wisata Gili Terawangan $paket',
+                          '$paket',
                           style: blackTextStyle.copyWith(
                             fontWeight: semiBold,
                             fontSize: 14,
                           ),
                         ),
                         Text(
-                          harga,
+                          'IDR $harga/pax',
                           style: greyTextStyle.copyWith(
                             fontWeight: medium,
                             fontSize: 14,
@@ -85,33 +87,33 @@ void showDraggableSheet(
                                 fontSize: 12,
                               ),
                             ),
-                            children: includeItem.map((item) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 4.0,
-                                  horizontal: 16.0,
-                                ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Icon(
-                                      Icons.check,
-                                      size: 12,
-                                      color: primaryColor,
-                                    ),
-                                    SizedBox(width: 8),
-                                    Expanded(
-                                      child: Text(
-                                        item,
-                                        style: blackTextStyle.copyWith(
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }).toList(),
+                            // children: includeItem.map((item) {
+                            //   return Padding(
+                            //     padding: const EdgeInsets.symmetric(
+                            //       vertical: 4.0,
+                            //       horizontal: 16.0,
+                            //     ),
+                            //     child: Row(
+                            //       crossAxisAlignment: CrossAxisAlignment.start,
+                            //       children: [
+                            //         Icon(
+                            //           Icons.check,
+                            //           size: 12,
+                            //           color: primaryColor,
+                            //         ),
+                            //         SizedBox(width: 8),
+                            //         Expanded(
+                            //           child: Text(
+                            //             item,
+                            //             style: blackTextStyle.copyWith(
+                            //               fontSize: 14,
+                            //             ),
+                            //           ),
+                            //         ),
+                            //       ],
+                            //     ),
+                            //   );
+                            // }).toList(),
                           ),
                         ),
                         Gap(14),
@@ -220,12 +222,6 @@ void showDraggableSheet(
                               children: [
                                 Text(
                                   'Total Paket A: \$${controller.totalA.value.toStringAsFixed(2)}',
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  'Total Paket B: \$${controller.totalB.value.toStringAsFixed(2)}',
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold),
