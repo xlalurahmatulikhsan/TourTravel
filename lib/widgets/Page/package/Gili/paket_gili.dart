@@ -77,7 +77,7 @@ class WisataPage extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                item.eksterReview.rating.toString(),
+                                item.ratingTempat.toString(),
                                 style: blackTextStyle.copyWith(
                                   fontWeight: semiBold,
                                   fontSize: 14,
@@ -274,13 +274,6 @@ class WisataPage extends StatelessWidget {
                                         ),
                                       ),
                                     ]),
-                                // Text(
-                                //   item.price,
-                                //   style: blackTextStyle.copyWith(
-                                //     fontWeight: semiBold,
-                                //     fontSize: 12,
-                                //   ),
-                                // ),
                                 Gap(4),
                                 Image.asset('images/crossLine.png'),
                                 Gap(4),
@@ -357,7 +350,7 @@ class WisataPage extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      item.eksterReview.rating.toString(),
+                                      item.ratingTempat.toString(),
                                       style: blackTextStyle.copyWith(
                                         fontWeight: medium,
                                         fontSize: 24,
@@ -376,7 +369,7 @@ class WisataPage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          item.eksterReview.masukan,
+                                          item.ekspresi,
                                           style: blackTextStyle.copyWith(
                                             fontWeight: medium,
                                             fontSize: 12,
@@ -441,7 +434,7 @@ class WisataPage extends StatelessWidget {
                                         ),
                                         image: DecorationImage(
                                           image: AssetImage(
-                                            item.interReview.image,
+                                            item.review.image,
                                           ),
                                           fit: BoxFit.cover,
                                         ),
@@ -461,7 +454,7 @@ class WisataPage extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   Text(
-                                                    item.interReview.rating
+                                                    item.review.rating
                                                         .toString(),
                                                     style:
                                                         blackTextStyle.copyWith(
@@ -490,7 +483,7 @@ class WisataPage extends StatelessWidget {
                                             ],
                                           ),
                                           Text(
-                                            item.interReview.namaOrang,
+                                            item.review.namaOrang,
                                             style: blackTextStyle.copyWith(
                                               fontWeight: medium,
                                               fontSize: 12,
@@ -498,7 +491,7 @@ class WisataPage extends StatelessWidget {
                                           ),
                                           Gap(6),
                                           Text(
-                                            item.interReview.saran,
+                                            item.review.saran,
                                             style: greyTextStyle.copyWith(
                                               fontWeight: regular,
                                               fontSize: 12,

@@ -14,23 +14,38 @@ class PackageController extends GetxController {
       Item(
         'Paket Gili Terawangan \n3 Hari 2 Malam',
         3000000,
-        Review('bagus', 4.8, 'images/image_1.jpg', 'Iksan',
-            '''Lorem ipsum dolor sit amet,
-adipiscing elit.'''),
+        Review(
+          'bagus',
+          4.8,
+          'images/image_1.jpg',
+          'Iksan',
+          '''Lorem ipsum dolor sit amet,
+adipiscing elit.''',
+        ),
       ),
       Item(
         'Paket Gili Terawangan \n2 Hari 1 Malam',
         2000000,
-        Review('bagus', 4.6, 'images/image_1.jpg', 'Adriyan',
-            '''Lorem ipsum dolor sit amet,
-adipiscing elit.'''),
+        Review(
+          'bagus',
+          4.6,
+          'images/image_1.jpg',
+          'Adriyan',
+          '''Lorem ipsum dolor sit amet,
+adipiscing elit.''',
+        ),
       ),
       Item(
         'Paket Gili Terawangan \n1 Hari',
         1000000,
-        Review('bagus', 4.9, 'images/image_1.jpg', 'Ardika',
-            '''Lorem ipsum dolor sit amet,
-adipiscing elit.'''),
+        Review(
+          'bagus',
+          4.9,
+          'images/image_1.jpg',
+          'Ardika',
+          '''Lorem ipsum dolor sit amet,
+adipiscing elit.''',
+        ),
       ),
     ]);
 
@@ -38,35 +53,32 @@ adipiscing elit.'''),
       Wisata(
         'Gili Terawangan',
         'images/image_1.jpg',
-        'Lombok Utara',
-        Review('bagus', 4.6, 'images/image_1.jpg', 'Iksan',
-            '''Lorem ipsum dolor sit amet,
-adipiscing elit.'''),
+        'Lombok Utara' 
+        4.9,
         '''Paket Wisata Gili Trawangan adalah pilihan yang sempurna bagi anda yang ingin menikmati pengalaman liburan yang penuh keindahan dan aktivitas bahari menyenangkan.
 Mulai dari menginap di Gili Trawangan dan merasakan suasananya yang hidup, hingga menjelajahi kekayaan bawah laut melalui snorkeling di perairan Gili Trawangan, Gili Air, dan Gili Meno.
 Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara total dan maksimal bersama MYGUIDE.''',
+        'Bagus', 
       ),
       Wisata(
         'Gili Air',
         'images/image_1.jpg',
         'Lombok Utara',
-        Review('bagus', 4.5, 'images/image_1.jpg', 'Iksan',
-            '''Lorem ipsum dolor sit amet,
-adipiscing elit.'''),
+        4.8,
         '''Paket Wisata Gili Trawangan adalah pilihan yang sempurna bagi anda yang ingin menikmati pengalaman liburan yang penuh keindahan dan aktivitas bahari menyenangkan.
 Mulai dari menginap di Gili Trawangan dan merasakan suasananya yang hidup, hingga menjelajahi kekayaan bawah laut melalui snorkeling di perairan Gili Trawangan, Gili Air, dan Gili Meno.
 Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara total dan maksimal bersama MYGUIDE.''',
+        'Bagus', 
       ),
       Wisata(
         'Gili Kondo',
         'images/image_1.jpg',
         'Lombok Utara',
-        Review('bagus', 4.6, 'images/image_1.jpg', 'Iksan',
-            '''Lorem ipsum dolor sit amet,
-adipiscing elit.'''),
+        4.7,
         '''Paket Wisata Gili Trawangan adalah pilihan yang sempurna bagi anda yang ingin menikmati pengalaman liburan yang penuh keindahan dan aktivitas bahari menyenangkan.
 Mulai dari menginap di Gili Trawangan dan merasakan suasananya yang hidup, hingga menjelajahi kekayaan bawah laut melalui snorkeling di perairan Gili Trawangan, Gili Air, dan Gili Meno.
 Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara total dan maksimal bersama MYGUIDE.''',
+        'Bagus', 
       ),
     ]);
 

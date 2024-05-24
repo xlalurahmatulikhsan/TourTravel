@@ -3,30 +3,46 @@ import 'package:get/get.dart';
 class Item {
   String paketan;
   int price;
-  Review interReview;
+  Review review;
   var quantity = 0.obs; // .obs membuat variabel ini menjadi observable
 
-  Item(this.paketan,this.price,this.interReview,);
+  Item(
+    this.paketan,
+    this.price,
+    this.review,
+  );
 }
 
 class Wisata {
   String namaTempat;
-  String image;
+  String image; 
   String lokasi;
-  Review eksterReview;
+  double ratingTempat;
   String deskripsi;
-  
+  String ekspresi;
 
-  
-  Wisata(this.namaTempat,this.image,this.lokasi,this.eksterReview,this.deskripsi,);
+  Wisata(
+    this.namaTempat,
+    this.image,
+    this.lokasi,
+    this.ratingTempat,
+    this.deskripsi, 
+    this.ekspresi,
+  );
 }
 
-class Review{
+class Review {
   String masukan;
   double rating;
   String image;
   String namaOrang;
   String saran;
 
-  Review(this.masukan,this.rating,this.image,this.namaOrang,this.saran,);
+  Review(
+    this.masukan,
+    this.rating,
+    this.image,
+    this.namaOrang,
+    this.saran,
+  );
 }
