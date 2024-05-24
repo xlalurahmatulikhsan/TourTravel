@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:slicing/widgets/controller/counter.dart';
-import 'package:slicing/widgets/controller/paket.dart';
+import 'package:slicing/widgets/controller/controller.dart';
 
 class Test extends StatelessWidget {
   final PackageController controller = Get.put(PackageController());

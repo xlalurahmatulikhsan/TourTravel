@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:slicing/theme/theme.dart';
 // import 'package:slicing/widgets/controller/package_controller.dart';
-import 'package:slicing/widgets/controller/paket.dart';
+import 'package:slicing/widgets/controller/controller.dart';
 
 void showDraggableSheet(
     BuildContext context, String paket, String harga, List includeItem) {
@@ -204,43 +204,6 @@ void showDraggableSheet(
                                       icon: Icon(Icons.add),
                                       onPressed: () =>
                                           controller.incrementQuantityA(item),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                        ),
-                        Gap(14),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: ExpansionTile(
-                            title: Text(
-                              'Paket B',
-                              style: blackTextStyle.copyWith(
-                                fontWeight: semiBold,
-                                fontSize: 12,
-                              ),
-                            ),
-                            children: controller.packagesB.map((item) {
-                              return ListTile(
-                                title: Text(item.paketan),
-                                subtitle: Text(
-                                    'Price: \$${item.price.toStringAsFixed(2)}'),
-                                trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                      icon: Icon(Icons.remove),
-                                      onPressed: () =>
-                                          controller.decrementQuantityB(item),
-                                    ),
-                                    Obx(() => Text('${item.quantity}',
-                                        style: TextStyle(fontSize: 20))),
-                                    IconButton(
-                                      icon: Icon(Icons.add),
-                                      onPressed: () =>
-                                          controller.incrementQuantityB(item),
                                     ),
                                   ],
                                 ),

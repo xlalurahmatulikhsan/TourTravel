@@ -1,495 +1,453 @@
-// import 'dart:async';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:slicing/main.dart';
-// import 'package:slicing/widgets/Page/package/Gili/detailPesanan.dart';
-import 'package:slicing/widgets/controller/paket.dart';
-
-import 'detail.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:slicing/theme/theme.dart';
 import 'package:slicing/widgets/Page/home.dart';
+import 'package:slicing/widgets/controller/controller.dart';
 
-class PaketGili_1 extends StatefulWidget {
-  final PackageController controller = PackageController();
+class WisataPage extends StatelessWidget {
+  final PackageController controller = Get.put(PackageController());
+  final ButtonController buttonController = Get.put(ButtonController());
 
-  PaketGili_1({super.key});
-
-  @override
-  State<PaketGili_1> createState() => _PaketGili_1State();
-}
-
-class _PaketGili_1State extends State<PaketGili_1>
-    with SingleTickerProviderStateMixin {
-  late TabController tabController;
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    tabController = TabController(length: 3, vsync: this);
-  }
-
-  var paketGili = [
-    {
-      'paket': '3 Hari 2 Malam',
-      'harga': '3320000',
-      'tanggal': '21 mei',
-    },
-    {
-      'paket': '2 Hari 1 Malam',
-      'harga': '2320000',
-      'tanggal': '21 mei',
-    },
-    {
-      'paket': '1 Hari',
-      'harga': '1320000',
-      'tanggal': '21 mei',
-    }
-  ];
-
-  var review = [
-    {
-      'nama': 'Iksan',
-      'rating': '5.0',
-      'tanggal': '28 April 2024',
-      'deskripsi': '''Lorem ipsum dolor sit amet,
-adipiscing elit.''',
-    },
-    {
-      'nama': 'Adriyan',
-      'rating': '4.9',
-      'tanggal': '28 September 2023',
-      'deskripsi': '''Lorem ipsum dolor sit amet,
-adipiscing elit. So amazing''',
-    },
-    {
-      'nama': 'Ardika',
-      'rating': '5.0',
-      'tanggal': '28 April 2024',
-      'deskripsi': '''Lorem ipsum dolor sit amet,
-adipiscing elit. Kelas cuy''',
-    }
-  ];
-  final List<List<String>> include = [
-    [
-      'Transportasi AC standar pariwisata antar jemput bandara',
-      'Dua malam akomodasi di hotel pilihan (1 kamar untuk 2 orang dan/atau 3 orang jika peserta ganjil) sudah termasuk sarapan di hotel',
-      'Satu kali makan siang di hari kedua',
-      'Tiket masuk kawasan wisata dan parkir',
-      'Private glass bottom boat saat snorkeling di Perairan Gili Trawangan, Meno dan Air di hari kedua',
-      'Private speed boat antar jemput Gili Trawangan di hari pertama dan ketiga',
-      'Perlengkapan snorkeling',
-      'Air mineral selama program',
-    ],
-    [
-      'Transportasi AC standar pariwisata antar jemput bandara',
-      'Dua malam akomodasi di hotel pilihan (1 kamar untuk 2 orang dan/atau 3 orang jika peserta ganjil) sudah termasuk sarapan di hotel',
-      'Satu kali makan siang di hari kedua',
-      'Tiket masuk kawasan wisata dan parkir',
-      'Private glass bottom boat saat snorkeling di Perairan Gili Trawangan, Meno dan Air di hari kedua',
-    ],
-    [
-      'Transportasi AC standar pariwisata antar jemput bandara',
-    ],
-  ];
   @override
   Widget build(BuildContext context) {
+    final scroll = ScrollController();
+    // final item = controller.paketGiliTerawangan;
     return Scaffold(
       backgroundColor: whiteColor2,
       body: SingleChildScrollView(
+        controller: scroll,
         child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: 300,
               width: double.infinity,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(
-                    'images/Paket_gili_3H_2M.png',
-                  ),
+                  image: AssetImage('images/image_1.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
               child: Padding(
                 padding: EdgeInsets.only(
-                  left: 20,
-                  top: 30,
+                  right: 330,
+                  bottom: 250,
                 ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Get.off(() => Home());
-                      },
-                      child: Image.asset(
-                        'images/arrow_back.png',
-                      ),
-                    ),
-                  ],
+                child: IconButton(
+                  onPressed: () {
+                    Get.off(() => Home());
+                  },
+                  icon: Image.asset(
+                    'images/arrow_back.png',
+                  ),
                 ),
               ),
             ),
-            Container(
-              height: 102,
-              width: double.infinity,
-              color: whiteColor1,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Gap(10),
-                    Text(
-                      'Paket Wisata Gili Terawangan',
-                      style: blackTextStyle.copyWith(
-                        fontWeight: semiBold,
-                        fontSize: 16,
+            Obx(() {
+              if (controller.destinasi.isEmpty) {
+                return Center(child: Text('Tidak ada wisata tersedia.'));
+              }
+              final item = controller.destinasi[0];
+              return Container(
+                width: double.infinity,
+                color: whiteColor1,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Paket Wisata ${item.namaTempat}',
+                        style: blackTextStyle.copyWith(
+                          fontWeight: semiBold,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                    Gap(6),
-                    Row(
-                      children: [
-                        Image.asset('images/bintang.png'),
-                        Gap(6),
-                        Text(
-                          'Rating',
-                          style: blackTextStyle.copyWith(
-                            fontWeight: semiBold,
-                            fontSize: 16,
+                      Gap(6),
+                      Row(
+                        children: [
+                          Image.asset('images/bintang.png'),
+                          Gap(6),
+                          Row(
+                            children: [
+                              Text(
+                                item.eksterReview.rating.toString(),
+                                style: blackTextStyle.copyWith(
+                                  fontWeight: semiBold,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              Text(
+                                '/5',
+                                style: greyTextStyle.copyWith(
+                                  fontWeight: semiBold,
+                                  fontSize: 10,
+                                ),
+                              ),
+                            ],
                           ),
-                        )
-                      ],
-                    ),
-                    Gap(6),
-                    Row(
-                      children: [
-                        Image.asset('images/lokasi.png'),
-                        Gap(6),
-                        Text(
-                          'Gili Indah, Kec. Pemenang, Kabupaten Lombok Utara,\nNusa Tenggara Barat',
-                          style: greyTextStyle.copyWith(
-                            fontWeight: regular,
-                            fontSize: 12,
+                          Gap(4),
+                          Text(
+                            '(Review & Foto)',
+                            style: greyTextStyle.copyWith(
+                              fontWeight: regular,
+                              fontSize: 10,
+                            ),
                           ),
-                        )
-                      ],
-                    )
-                  ],
+                        ],
+                      ),
+                      Gap(6),
+                      GestureDetector(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset('images/iconLokasi.png'),
+                                Gap(6),
+                                Text(
+                                  item.lokasi,
+                                  style: greyTextStyle.copyWith(
+                                    fontWeight: regular,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: primaryColor,
+                              size: 16,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ),
+              );
+            }),
             Container(
+              height: 40,
               color: whiteColor1,
-              child: TabBar(
-                labelColor: primaryColor,
-                indicatorColor: secondColor,
-                controller: tabController,
-                labelStyle: greyTextStyle.copyWith(
-                  fontWeight: regular,
-                  fontSize: 14,
-                ),
-                tabs: [
-                  Tab(
-                    text: 'Deskripsi',
-                  ),
-                  Tab(
-                    text: 'Paket',
-                  ),
-                  Tab(
-                    text: 'Review',
-                  ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildTabItem(0, 'Deskripsi', scroll),
+                  _buildTabItem(1, 'Paket', scroll),
+                  _buildTabItem(2, 'Review', scroll),
                 ],
               ),
             ),
+            Obx(() {
+              //deskripsi
+              if (controller.destinasi.isEmpty) {
+                return Center(child: Text('Tidak ada wisata tersedia.'));
+              }
+              final item = controller.destinasi[0];
+              return Container(
+                color: whiteColor1,
+                height: 300,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Gap(10),
+                      Text(
+                        'Deskripsi',
+                        style: blackTextStyle.copyWith(
+                          fontWeight: bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      Gap(6),
+                      Text(
+                        item.deskripsi,
+                        style: greyTextStyle.copyWith(
+                          fontWeight: regular,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }),
+            Gap(6),
             Container(
+              height: 70,
               color: whiteColor1,
-              width: double.infinity,
-              height: 256,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 20,
                   vertical: 10,
                 ),
-                child: TabBarView(
-                  controller: tabController,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Description',
-                          style: blackTextStyle.copyWith(
-                            fontWeight: bold,
-                            fontSize: 14,
-                          ),
-                        ),
-                        Gap(10),
-                        Container(
-                          child: Text(
-                            '''Paket Wisata Gili Trawangan adalah pilihan yang sempurna bagi anda yang ingin menikmati pengalaman liburan yang penuh keindahan dan aktivitas bahari menyenangkan.
-Mulai dari menginap di Gili Trawangan dan merasakan suasananya yang hidup, hingga menjelajahi kekayaan bawah laut melalui snorkeling di perairan Gili Trawangan, Gili Air, dan Gili Meno.
-Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara total dan maksimal bersama MYGUIDE.''',
-                            style: greyTextStyle.copyWith(
-                              fontWeight: regular,
-                              fontSize: 12,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Text('hi'),
-                    Text('ya'),
-                  ],
-                ),
-              ),
-            ),
-            Gap(
-              6,
-              color: whiteColor2,
-            ),
-            Container(
-              color: whiteColor1,
-              width: double.infinity,
-              height: 70,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 20,
-                    ),
-                    child: Text(
+                    Text(
                       'Paket',
                       style: blackTextStyle.copyWith(
                         fontWeight: bold,
                         fontSize: 14,
                       ),
                     ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      '   Cek Ketersedian Paket',
-                      style: greenTextStyle.copyWith(
-                        fontWeight: regular,
-                        fontSize: 12,
+                    Gap(10),
+                    GestureDetector(
+                      child: Row(
+                        children: [
+                          Text(
+                            'Cek Ketersediaan Paket',
+                            style: greenTextStyle.copyWith(
+                              fontWeight: regular,
+                              fontSize: 12,
+                            ),
+                          ),
+                          Gap(4),
+                          Image.asset('images/iconCek.png')
+                        ],
                       ),
-                    ),
-                  ),
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
             Gap(20),
             SizedBox(
-              height: 100,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: paketGili.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                      left: index == 0 ? 20 : 10,
-                    ),
-                    child: Container(
-                      height: 100,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: whiteColor1,
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
+                // ini Paket
+                height: 100,
+                child: Obx(() {
+                  if (controller.paketGiliTerawangan.isEmpty) {
+                    Text('paket Kosong');
+                  }
+                  final items = controller.paketGiliTerawangan;
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      final item = items[index];
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          left: index == 0 ? 20 : 10,
+                        ),
+                        child: Container(
+                          width: 300,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: whiteColor1,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  'Paket Wisata Gili Terawangan \n${paketGili[index]['paket']}',
-                                  style: blackTextStyle.copyWith(
-                                    fontWeight: semiBold,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                GestureDetector(
-                                  child: Text(
-                                    'Detail',
-                                    style: greenTextStyle.copyWith(
-                                      fontWeight: medium,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    showDraggableSheet(
-                                      context,
-                                      paketGili[index]['paket']!,
-                                      paketGili[index]['harga']!,
-                                      include[index],
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                            Gap(8),
-                            Image.asset('images/crossLine.png'),
-                            Gap(8),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  paketGili[index]['harga'] ?? '',
-                                  style: greyTextStyle.copyWith(
-                                    fontWeight: semiBold,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                Text('2'),
-                                Container(
-                                  height: 28,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(6),
-                                    color: primaryColor,
-                                  ),
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      'Pilih Paket',
-                                      style: whiteTextStyle.copyWith(
-                                        fontWeight: medium,
-                                        fontSize: 10,
+                                Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        item.paketan,
+                                        style: blackTextStyle.copyWith(
+                                          fontWeight: semiBold,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        child: Text(
+                                          'Detail',
+                                          style: greenTextStyle.copyWith(
+                                            fontWeight: medium,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                                // Text(
+                                //   item.price,
+                                //   style: blackTextStyle.copyWith(
+                                //     fontWeight: semiBold,
+                                //     fontSize: 12,
+                                //   ),
+                                // ),
+                                Gap(4),
+                                Image.asset('images/crossLine.png'),
+                                Gap(4),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'IDR ${item.price}/pax',
+                                      style: greyTextStyle.copyWith(
+                                        fontWeight: semiBold,
+                                        fontSize: 12,
                                       ),
                                     ),
-                                  ),
-                                ),
+                                    Container(
+                                      height: 28,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(6),
+                                        color: primaryColor,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 10,
+                                        ),
+                                        child: Center(
+                                            child: Text(
+                                          'Pilih Paket',
+                                          style: whiteTextStyle.copyWith(
+                                            fontWeight: medium,
+                                            fontSize: 10,
+                                          ),
+                                        )),
+                                      ),
+                                    )
+                                  ],
+                                )
                               ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   );
-                },
-              ),
-            ),
+                })),
             Gap(10),
             Container(
-              height: 240,
+              //review
+              height: 200,
               width: double.infinity,
               color: whiteColor1,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: 24,
-                  bottom: 16,
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Review',
-                            style: blackTextStyle.copyWith(
-                              fontWeight: bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                          Gap(6),
-                          Row(
-                            children: [
-                              Text(
-                                '4.9',
-                                style: blackTextStyle.copyWith(
-                                  fontWeight: medium,
-                                  fontSize: 24,
-                                ),
-                              ),
-                              Text(
-                                '/5',
-                                style: blackTextStyle.copyWith(
-                                  fontWeight: medium,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              Gap(4),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Bagus',
-                                    style: blackTextStyle.copyWith(
-                                      fontWeight: medium,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Dari 3 Review',
-                                    style: greyTextStyle.copyWith(
-                                      fontWeight: regular,
-                                      fontSize: 10,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Gap(212),
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.arrow_forward_ios,
-                                ),
-                                iconSize: 16,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+              child: Column(
+                children: [
+                  Gap(24),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20,
                     ),
-                    SizedBox(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Review',
+                          style: blackTextStyle.copyWith(
+                            fontWeight: bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Obx(() {
+                          final item = controller.destinasi[0];
+                          return GestureDetector(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      item.eksterReview.rating.toString(),
+                                      style: blackTextStyle.copyWith(
+                                        fontWeight: medium,
+                                        fontSize: 24,
+                                      ),
+                                    ),
+                                    Text(
+                                      '/5',
+                                      style: blackTextStyle.copyWith(
+                                        fontWeight: medium,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    Gap(4),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          item.eksterReview.masukan,
+                                          style: blackTextStyle.copyWith(
+                                            fontWeight: medium,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Dari 3 Review',
+                                          style: greyTextStyle.copyWith(
+                                            fontWeight: regular,
+                                            fontSize: 10,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 20,
+                                )
+                              ],
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
+                  Gap(6),
+                  Obx(() {
+                    final items = controller.paketGiliTerawangan;
+                    return SizedBox(
                       height: 100,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: review.length,
+                        itemCount: items.length,
                         itemBuilder: (context, index) {
+                          final item = items[index];
+                          final now = DateTime.now();
                           return Padding(
                             padding: EdgeInsets.only(
                               left: index == 0 ? 20 : 10,
                             ),
                             child: Container(
-                              width: 316,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                color: whiteColor2,
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 84,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(8),
-                                        bottomLeft: Radius.circular(8),
-                                      ),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                            'images/image_1.jpg',
-                                          ),
-                                          fit: BoxFit.cover),
-                                    ),
+                                height: 100,
+                                width: 316,
+                                decoration: BoxDecoration(
+                                  color: whiteColor2,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(8),
+                                    bottomLeft: Radius.circular(8),
                                   ),
-                                  Container(
-                                    width: 232,
-                                    height: 100,
-                                    child: Padding(
+                                ),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 100,
+                                      width: 84,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(8),
+                                          bottomLeft: Radius.circular(8),
+                                        ),
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                            item.interReview.image,
+                                          ),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
                                       padding: EdgeInsets.symmetric(
                                         horizontal: 10,
                                         vertical: 10,
@@ -499,14 +457,12 @@ Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara 
                                             CrossAxisAlignment.start,
                                         children: [
                                           Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               Row(
                                                 children: [
                                                   Text(
-                                                    review[index]['rating'] ??
-                                                        '',
+                                                    item.interReview.rating
+                                                        .toString(),
                                                     style:
                                                         blackTextStyle.copyWith(
                                                       fontWeight: medium,
@@ -520,11 +476,12 @@ Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara 
                                                       fontWeight: medium,
                                                       fontSize: 10,
                                                     ),
-                                                  )
+                                                  ),
                                                 ],
                                               ),
+                                              Gap(130),
                                               Text(
-                                                review[index]['tanggal'] ?? '',
+                                                '${now.day}/${now.month}/${now.year}',
                                                 style: greyTextStyle.copyWith(
                                                   fontWeight: regular,
                                                   fontSize: 10,
@@ -533,15 +490,15 @@ Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara 
                                             ],
                                           ),
                                           Text(
-                                            review[index]['nama'] ?? '',
+                                            item.interReview.namaOrang,
                                             style: blackTextStyle.copyWith(
                                               fontWeight: medium,
                                               fontSize: 12,
                                             ),
                                           ),
-                                          Gap(4),
+                                          Gap(6),
                                           Text(
-                                            review[index]['deskripsi'] ?? '',
+                                            item.interReview.saran,
                                             style: greyTextStyle.copyWith(
                                               fontWeight: regular,
                                               fontSize: 12,
@@ -550,21 +507,67 @@ Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara 
                                         ],
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                                  ],
+                                )),
                           );
                         },
                       ),
-                    )
-                  ],
-                ),
+                    );
+                  })
+                ],
               ),
             )
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          scroll.animateTo(0.0,
+              duration: Duration(seconds: 1), curve: Curves.easeInOut);
+        },
+      ),
+    );
+  }
+
+  //for button
+  Widget _buildTabItem(int index, String title, ScrollController scroll) {
+    return GestureDetector(
+      onTap: () {
+        buttonController.selectButton(index);
+        double position = buttonController.scrollPositions[index] ?? 0.0;
+        scroll.animateTo(position,
+            duration: Duration(seconds: 1), curve: Curves.easeInOut);
+      },
+      child: Obx(() {
+        bool isSelected = buttonController.selectedIndex.value == index;
+        Color textColor = isSelected ? whiteColor1 : greyColor;
+        // Color borderColor = isSelected ? primaryColor : greyColor;
+        Color bgColor = isSelected ? primaryColor : whiteColor1;
+        return Container(
+          width: 90,
+          decoration: BoxDecoration(
+            color: bgColor,
+            border: Border.all(
+              width: 2,
+              color: primaryColor,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  color: textColor,
+                  fontWeight: regular,
+                  fontSize: 14,
+                ),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

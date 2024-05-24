@@ -199,7 +199,10 @@ class _HomeState extends State<Home> {
                             ),
                             child: GestureDetector(
                               onTap: () {
-                                Get.off(() => PaketGili_1());
+                                if (paketWisata[index]['nama'] ==
+                                    'Gili Terawangan') {
+                                  Get.off(() => WisataPage());
+                                } else {}
                               },
                               child: Container(
                                 width: 212,
