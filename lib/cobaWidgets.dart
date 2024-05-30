@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:slicing/theme/theme.dart';
+import 'package:slicing/widgets/theme/theme.dart';
 
 class CounterWidget extends StatefulWidget {
   @override
@@ -406,14 +406,14 @@ void showDetailPesanan(
   );
 }
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Home1 extends StatefulWidget {
+  const Home1({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Home1> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home1> {
   var paketWisata = [
     {
       'nama': 'Gili Terawangan',

@@ -1,21 +1,17 @@
 import 'package:get/get.dart';
 
 class Item {
-  String paketan;
+  String paket;
   int price;
   Review review;
-  var quantity = 0.obs; // .obs membuat variabel ini menjadi observable
+  RxInt quantity;
 
-  Item(
-    this.paketan,
-    this.price,
-    this.review,
-  );
+  Item(this.paket, this.price, this.review) : quantity = 0.obs;
 }
- 
-class Wisata { 
+
+class Wisata {
   String namaTempat;
-  String image; 
+  String image;
   String lokasi;
   double averageRating;
   String deskripsi;
@@ -25,8 +21,8 @@ class Wisata {
     this.namaTempat,
     this.image,
     this.lokasi,
-    this.averageRating, 
-    this.deskripsi, 
+    this.averageRating,
+    this.deskripsi,
     this.ekspresi,
   );
 }
@@ -35,14 +31,27 @@ class Review {
   String masukan;
   double rating;
   String image;
-  String namaOrang;
   String saran;
 
   Review(
     this.masukan,
     this.rating,
     this.image,
-    this.namaOrang,
     this.saran,
   );
+}
+
+class Banner {
+  String image;
+
+  Banner(this.image);
+}
+
+class User {
+  String namaOrang;
+  String nomorTelepon;
+  String email;
+  String password;
+
+  User(this.namaOrang, this.nomorTelepon, this.email, this.password);
 }

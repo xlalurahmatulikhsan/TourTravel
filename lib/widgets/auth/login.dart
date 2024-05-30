@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:slicing/theme/theme.dart';
-import 'package:slicing/widgets/Page/home.dart';
+import 'package:slicing/widgets/theme/theme.dart';
+import 'package:slicing/Page/home.dart';
 import 'package:slicing/widgets/auth/forgetPass.dart';
 import 'package:slicing/widgets/auth/register.dart';
 

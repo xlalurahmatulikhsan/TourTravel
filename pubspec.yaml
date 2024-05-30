@@ -40,6 +40,8 @@ dependencies:
   gap: ^3.0.1
   accordion: ^2.6.0
   get: ^4.6.6
+  smooth_page_indicator: ^1.0.0
+
 
 
 dev_dependencies:

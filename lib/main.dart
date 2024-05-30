@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:slicing/cobaTabbar.dart';
-import 'package:slicing/theme/theme.dart';
-import 'package:slicing/widgets/Page/package/Gili/detailPesanan.dart';
-import 'package:slicing/widgets/auth/splash.dart';
+import 'package:slicing/cobaWidgets.dart';
+import 'package:slicing/widgets/theme/theme.dart';
+import 'package:slicing/Page/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: primaryColor),
-      home: Test(),
+      home: Home(),
     );
   }
 }
