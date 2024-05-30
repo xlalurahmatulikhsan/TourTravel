@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:slicing/widgets/theme/theme.dart';
-import 'package:slicing/Page/home.dart';
+import 'package:slicing/Page/home_page.dart';
 import 'package:slicing/Page/package/detail.dart';
 import 'package:slicing/Page/package/detailPesanan.dart';
 import 'package:slicing/controller/controller.dart';

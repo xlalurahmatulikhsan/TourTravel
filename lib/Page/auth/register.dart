@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:slicing/Page/home.dart';
 import 'package:slicing/controller/authController.dart';
 import 'package:slicing/widgets/theme/theme.dart';
-import 'package:slicing/widgets/auth/forgetPass.dart';
-import 'package:slicing/widgets/auth/register.dart';
+import 'package:slicing/Page/auth/login.dart';
 
-class Login extends StatelessWidget {
-  final SignInController controller = Get.put(SignInController());
+class Register extends StatelessWidget {
+  final SignUpController controller = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +20,45 @@ class Login extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('images/masuk.png'),
+                  Image.asset('images/myGuide.png'),
                 ],
               ),
               Gap(40),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'Nama Lengkap',
+                        style: whiteTextStyle.copyWith(
+                          fontWeight: medium,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Gap(6),
+                  TextFormField(
+                    controller: controller.nama,
+                    decoration: InputDecoration(
+                      fillColor: whiteColor1,
+                      filled: true,
+                      hintText: 'Masukan Nama Lengkap',
+                      hintStyle: greyTextStyle.copyWith(
+                        fontWeight: regular,
+                        fontSize: 14,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      constraints: BoxConstraints(maxHeight: 40),
+                      contentPadding: EdgeInsets.only(top: 10),
+                      prefixIcon: Image.asset('images/iconUsername.png'),
+                    ),
+                  )
+                ],
+              ),
+              Gap(14),
               Column(
                 children: [
                   Row(
@@ -76,8 +109,8 @@ class Login extends StatelessWidget {
                   ),
                   Gap(6),
                   TextFormField(
-                    obscureText: true,
                     controller: controller.pass,
+                    obscureText: true,
                     decoration: InputDecoration(
                       fillColor: whiteColor1,
                       filled: true,
@@ -98,6 +131,7 @@ class Login extends StatelessWidget {
                 ],
               ),
               Gap(14),
+              Gap(14),
               Container(
                 height: 40,
                 width: double.infinity,
@@ -107,17 +141,16 @@ class Login extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    if (controller.nomor.text == '' &&
+                    if (controller.nama.text == '' &&
+                        controller.nomor.text == '' &&
                         controller.pass.text == '') {
-                      Get.snackbar("Oi Isi dlu Kimak", "Cahocibeeee");
-                      return;
+                      Get.snackbar('Peringatan', 'Belum lengkap');
                     } else {
-                      Get.off(() => Home());
+                      Get.off(() => Login());
                     }
-                    ;
                   },
                   child: Text(
-                    'Masuk',
+                    'Daftar',
                     style: whiteTextStyle.copyWith(
                         fontWeight: medium, fontSize: 16),
                   ),
@@ -156,25 +189,33 @@ class Login extends StatelessWidget {
                   child: Image.asset('images/googlebutton.png'),
                 ),
               ),
-              Gap(214),
+              Gap(104),
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  Text(
+                    'Dengan mendaftar, saya menyetujui',
+                    style: whiteTextStyle.copyWith(
+                      fontWeight: regular,
+                      fontSize: 12,
+                    ),
+                  ),
                   TextButton(
-                    onPressed: () {
-                      Get.off(() => ForgetPass());
-                    },
+                    onPressed: () {},
                     child: Text(
-                      'Lupa Password?',
+                      'Kebijakan Privasi',
                       style: greenTextStyle.copyWith(
-                          fontWeight: medium, fontSize: 12),
+                        fontWeight: medium,
+                        fontSize: 12,
+                      ),
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Sudah Mempunyai Akun?',
+                        'Kembali Ke',
                         style: whiteTextStyle.copyWith(
                           fontWeight: regular,
                           fontSize: 12,
@@ -182,18 +223,16 @@ class Login extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.off(() => Register());
+                          Get.off(() => Login());
                         },
                         child: Text(
-                          'Daftar',
+                          'Masuk',
                           style: greenTextStyle.copyWith(
-                            fontWeight: medium,
-                            fontSize: 12,
-                          ),
+                              fontWeight: medium, fontSize: 12),
                         ),
                       ),
                     ],
-                  ),
+                  )
                 ],
               ),
             ],

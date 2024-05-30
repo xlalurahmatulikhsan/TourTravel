@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:slicing/widgets/auth/login.dart';
+import 'package:slicing/Page/auth/login.dart';
 // import 'package:get/get.dart';
 
 class Splash extends StatefulWidget {

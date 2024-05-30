@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:slicing/widgets/theme/theme.dart';
-import 'package:slicing/widgets/auth/forgetPass.dart';
+import 'package:slicing/Page/auth/forgetPass.dart';
 
 class PassKonfirmasi extends StatelessWidget {
   const PassKonfirmasi({super.key});
