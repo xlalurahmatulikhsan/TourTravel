@@ -10,7 +10,7 @@ import 'package:slicing/controller/controller.dart';
 void showDragDetailPesanan(
   context,
   String paket,
-  String price,
+  String totalPrice,
   int index,
   RxInt quantity,
 ) {
@@ -205,7 +205,7 @@ void showDragDetailPesanan(
                                 Row(
                                   children: [
                                     Text(
-                                      'Mulai Dari IDR $price',
+                                      'Mulai Dari IDR $totalPrice',
                                       style: greyTextStyle.copyWith(
                                         fontWeight: medium,
                                         fontSize: 12,
@@ -253,7 +253,7 @@ void showDragDetailPesanan(
                                   Row(
                                     children: [
                                       Text(
-                                        'IDR ${price}.00',
+                                        'IDR ${totalPrice}.00',
                                         style: redTextStyle.copyWith(
                                           fontWeight: medium,
                                           fontSize: 12,
@@ -370,10 +370,11 @@ void showDragDetailPesanan(
                                         jumlahPaket: item.quantity.value,
                                         keterangan: 'Tour Saja (Tanpa Hotel)',
                                         tanggalPesan: 'DateTimeNow',
-                                        namaPemesan: user.namaOrang,
+                                        namaPemesan: user.nama,
                                         nomerPemesan: user.nomorTelepon,
                                         emailPemesan: user.email,
-                                        price: item.price.toString(),
+                                        totalPrice:
+                                            controller.totalA.value.toString(),
                                       ),
                                     );
                                   },

@@ -1,14 +1,3 @@
-import 'package:get/get.dart';
-
-class Item {
-  String paket;
-  int price;
-  Review review;
-  RxInt quantity;
-
-  Item(this.paket, this.price, this.review) : quantity = 0.obs;
-}
-
 class Wisata {
   String namaTempat;
   String image;
@@ -39,19 +28,4 @@ class Review {
     this.image,
     this.saran,
   );
-}
-
-class Banner {
-  String image;
-
-  Banner(this.image);
-}
-
-class User {
-  String namaOrang;
-  String nomorTelepon;
-  String email;
-  String password;
-
-  User(this.namaOrang, this.nomorTelepon, this.email, this.password);
 }

@@ -12,7 +12,7 @@ class PesanPaketScreen extends StatelessWidget {
   final String namaPemesan;
   final String nomerPemesan;
   final String emailPemesan;
-  final String price;
+  final String totalPrice;
 
   PesanPaketScreen({
     required this.paket,
@@ -23,7 +23,7 @@ class PesanPaketScreen extends StatelessWidget {
     required this.namaPemesan,
     required this.nomerPemesan,
     required this.emailPemesan,
-    required this.price,
+    required this.totalPrice,
   });
 
   @override
@@ -70,9 +70,8 @@ class PesanPaketScreen extends StatelessWidget {
               ),
               Gap(34),
               Padding(
-                padding: EdgeInsets.only(
-                  left: 30,
-                  right: 10,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,94 +171,96 @@ class PesanPaketScreen extends StatelessWidget {
                         fontSize: 12,
                       ),
                     ),
-                    Gap(18),
-                    Container(
-                      height: 146,
-                      color: whiteColor2,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          children: [
-                            Gap(10),
-                            Text(
-                              'Detail Pemesan',
-                              style: blackTextStyle.copyWith(
-                                fontWeight: bold,
-                                fontSize: 14,
-                              ),
+                  ],
+                ),
+              ),
+              Gap(18),
+              Container(
+                height: 146,
+                width: double.infinity,
+                color: whiteColor2,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Gap(10),
+                      Text(
+                        'Detail Pemesan',
+                        style: blackTextStyle.copyWith(
+                          fontWeight: bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      Gap(10),
+                      Container(
+                        height: 88,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          color: whiteColor1,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: Offset(0, 4),
+                              blurRadius: 6,
+                              spreadRadius: 0,
                             ),
-                            Gap(10),
-                            Container(
-                              height: 88,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                color: whiteColor1,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    offset: Offset(0, 4),
-                                    blurRadius: 6,
-                                    spreadRadius: 0,
-                                  ),
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    offset: Offset(0, 0),
-                                    blurRadius: 6,
-                                    spreadRadius: 0,
-                                  ),
-                                ],
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 10,
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      namaPemesan,
-                                      style: blackTextStyle.copyWith(
-                                        fontWeight: bold,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    Gap(4),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          nomerPemesan,
-                                          style: blackTextStyle.copyWith(
-                                            fontWeight: medium,
-                                            fontSize: 12,
-                                          ),
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          size: 12,
-                                        ),
-                                      ],
-                                    ),
-                                    Gap(4),
-                                    Text(
-                                      emailPemesan,
-                                      style: greyTextStyle.copyWith(
-                                        fontWeight: medium,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              offset: Offset(0, 0),
+                              blurRadius: 6,
+                              spreadRadius: 0,
                             ),
                           ],
                         ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 10,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                namaPemesan,
+                                style: blackTextStyle.copyWith(
+                                  fontWeight: bold,
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Gap(4),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    nomerPemesan,
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: medium,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 12,
+                                  ),
+                                ],
+                              ),
+                              Gap(4),
+                              Text(
+                                emailPemesan,
+                                style: greyTextStyle.copyWith(
+                                  fontWeight: medium,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Spacer(),
@@ -282,7 +283,7 @@ class PesanPaketScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'IDR $price',
+                        'IDR $totalPrice',
                         style: blackTextStyle.copyWith(
                           fontWeight: medium,
                           fontSize: 12,

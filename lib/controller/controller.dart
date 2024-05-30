@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
-import 'package:slicing/controller/item.dart';
+import 'package:slicing/Model/user.dart';
+import 'package:slicing/Model/item.dart';
+import 'package:slicing/Model/wisata.dart';
 
 class PackageController extends GetxController {
   var paketGiliTerawangan = <Item>[].obs;

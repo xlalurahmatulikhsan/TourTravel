@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:slicing/widgets/theme/theme.dart';
 import 'package:slicing/Page/home.dart';
+import 'package:slicing/controller/authController.dart';
+import 'package:slicing/widgets/theme/theme.dart';
 import 'package:slicing/widgets/auth/forgetPass.dart';
 import 'package:slicing/widgets/auth/register.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  final SignInController controller = Get.put(SignInController());
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,7 @@ class Login extends StatelessWidget {
                   ),
                   Gap(6),
                   TextFormField(
+                    controller: controller.nomor,
                     decoration: InputDecoration(
                       fillColor: whiteColor1,
                       filled: true,
@@ -75,6 +77,7 @@ class Login extends StatelessWidget {
                   Gap(6),
                   TextFormField(
                     obscureText: true,
+                    controller: controller.pass,
                     decoration: InputDecoration(
                       fillColor: whiteColor1,
                       filled: true,
@@ -104,7 +107,14 @@ class Login extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    Get.off(() => Home());
+                    if (controller.nomor.text == '' &&
+                        controller.pass.text == '') {
+                      Get.snackbar("Oi Isi dlu Kimak", "Cahocibeeee");
+                      return;
+                    } else {
+                      Get.off(() => Home());
+                    }
+                    ;
                   },
                   child: Text(
                     'Masuk',
@@ -172,7 +182,7 @@ class Login extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.off(() => const Register());
+                          Get.off(() => Register());
                         },
                         child: Text(
                           'Daftar',

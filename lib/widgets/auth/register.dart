@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:slicing/controller/authController.dart';
 import 'package:slicing/widgets/theme/theme.dart';
 import 'package:slicing/widgets/auth/login.dart';
 
 class Register extends StatelessWidget {
-  const Register({super.key});
+  final SignUpController controller = Get.put(SignUpController());
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +39,7 @@ class Register extends StatelessWidget {
                   ),
                   Gap(6),
                   TextFormField(
+                    controller: controller.nama,
                     decoration: InputDecoration(
                       fillColor: whiteColor1,
                       filled: true,
@@ -72,6 +74,7 @@ class Register extends StatelessWidget {
                   ),
                   Gap(6),
                   TextFormField(
+                    controller: controller.nomor,
                     decoration: InputDecoration(
                       fillColor: whiteColor1,
                       filled: true,
@@ -106,6 +109,7 @@ class Register extends StatelessWidget {
                   ),
                   Gap(6),
                   TextFormField(
+                    controller: controller.pass,
                     obscureText: true,
                     decoration: InputDecoration(
                       fillColor: whiteColor1,
@@ -137,7 +141,13 @@ class Register extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    Get.off(() => Login());
+                    if (controller.nama.text == '' &&
+                        controller.nomor.text == '' &&
+                        controller.pass.text == '') {
+                      Get.snackbar('Peringatan', 'Belum lengkap');
+                    } else {
+                      Get.off(() => Login());
+                    }
                   },
                   child: Text(
                     'Daftar',
@@ -213,7 +223,7 @@ class Register extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.off(() => const Login());
+                          Get.off(() => Login());
                         },
                         child: Text(
                           'Masuk',

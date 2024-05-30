@@ -230,7 +230,6 @@ class WisataPage extends StatelessWidget {
                     Text('paket Kosong');
                   }
                   final items = controller.paketGiliTerawangan;
-
                   return ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: items.length,
@@ -515,7 +514,7 @@ class WisataPage extends StatelessWidget {
                                           Obx(() {
                                             final item = controller.user[index];
                                             return Text(
-                                              item.namaOrang,
+                                              item.nama,
                                               style: blackTextStyle.copyWith(
                                                 fontWeight: medium,
                                                 fontSize: 12,
