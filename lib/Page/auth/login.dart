@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:slicing/Page/home_page.dart';
 import 'package:slicing/controller/authController.dart';
 import 'package:slicing/widgets/theme/theme.dart';
-import 'package:slicing/widgets/auth/login.dart';
+import 'package:slicing/Page/auth/forgetPass.dart';
+import 'package:slicing/Page/auth/register.dart';
 
-class Register extends StatelessWidget {
-  final SignUpController controller = Get.put(SignUpController());
+class Login extends StatelessWidget {
+  final SignInController controller = Get.put(SignInController());
 
   @override
   Widget build(BuildContext context) {
@@ -20,45 +22,10 @@ class Register extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('images/myGuide.png'),
+                  Image.asset('images/masuk.png'),
                 ],
               ),
               Gap(40),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Nama Lengkap',
-                        style: whiteTextStyle.copyWith(
-                          fontWeight: medium,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Gap(6),
-                  TextFormField(
-                    controller: controller.nama,
-                    decoration: InputDecoration(
-                      fillColor: whiteColor1,
-                      filled: true,
-                      hintText: 'Masukan Nama Lengkap',
-                      hintStyle: greyTextStyle.copyWith(
-                        fontWeight: regular,
-                        fontSize: 14,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      constraints: BoxConstraints(maxHeight: 40),
-                      contentPadding: EdgeInsets.only(top: 10),
-                      prefixIcon: Image.asset('images/iconUsername.png'),
-                    ),
-                  )
-                ],
-              ),
-              Gap(14),
               Column(
                 children: [
                   Row(
@@ -109,8 +76,8 @@ class Register extends StatelessWidget {
                   ),
                   Gap(6),
                   TextFormField(
-                    controller: controller.pass,
                     obscureText: true,
+                    controller: controller.pass,
                     decoration: InputDecoration(
                       fillColor: whiteColor1,
                       filled: true,
@@ -131,7 +98,6 @@ class Register extends StatelessWidget {
                 ],
               ),
               Gap(14),
-              Gap(14),
               Container(
                 height: 40,
                 width: double.infinity,
@@ -141,16 +107,17 @@ class Register extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    if (controller.nama.text == '' &&
-                        controller.nomor.text == '' &&
+                    if (controller.nomor.text == '' &&
                         controller.pass.text == '') {
-                      Get.snackbar('Peringatan', 'Belum lengkap');
+                      Get.snackbar("Oi Isi dlu Kimak", "Cahocibeeee");
+                      return;
                     } else {
-                      Get.off(() => Login());
+                      Get.off(() => Home());
                     }
+                    ;
                   },
                   child: Text(
-                    'Daftar',
+                    'Masuk',
                     style: whiteTextStyle.copyWith(
                         fontWeight: medium, fontSize: 16),
                   ),
@@ -189,33 +156,25 @@ class Register extends StatelessWidget {
                   child: Image.asset('images/googlebutton.png'),
                 ),
               ),
-              Gap(104),
+              Gap(214),
               Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Dengan mendaftar, saya menyetujui',
-                    style: whiteTextStyle.copyWith(
-                      fontWeight: regular,
-                      fontSize: 12,
-                    ),
-                  ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.off(() => ForgetPass());
+                    },
                     child: Text(
-                      'Kebijakan Privasi',
+                      'Lupa Password?',
                       style: greenTextStyle.copyWith(
-                        fontWeight: medium,
-                        fontSize: 12,
-                      ),
+                          fontWeight: medium, fontSize: 12),
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Kembali Ke',
+                        'Sudah Mempunyai Akun?',
                         style: whiteTextStyle.copyWith(
                           fontWeight: regular,
                           fontSize: 12,
@@ -223,16 +182,18 @@ class Register extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {
-                          Get.off(() => Login());
+                          Get.off(() => Register());
                         },
                         child: Text(
-                          'Masuk',
+                          'Daftar',
                           style: greenTextStyle.copyWith(
-                              fontWeight: medium, fontSize: 12),
+                            fontWeight: medium,
+                            fontSize: 12,
+                          ),
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ],

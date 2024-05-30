@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:slicing/widgets/auth/login.dart';
+import 'package:slicing/Page/auth/login.dart';
 import 'package:slicing/widgets/theme/theme.dart';
 
 void main() {

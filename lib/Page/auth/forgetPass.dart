@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:slicing/widgets/theme/theme.dart';
-import 'package:slicing/widgets/auth/confirPass.dart';
-import 'package:slicing/widgets/auth/login.dart';
+import 'package:slicing/Page/auth/confirPass.dart';
+import 'package:slicing/Page/auth/login.dart';
 
 class ForgetPass extends StatelessWidget {
   const ForgetPass({super.key});
