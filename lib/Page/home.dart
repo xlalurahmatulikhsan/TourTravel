@@ -111,7 +111,7 @@ class _HomeState extends State<Home> {
                           carouselController: carouselController,
                           options: CarouselOptions(
                             height: 200,
-                            autoPlay: false,
+                            autoPlay: true,
                             enlargeCenterPage: true,
                             aspectRatio: 16 / 9,
                             onPageChanged: (index, reason) {
