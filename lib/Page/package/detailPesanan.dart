@@ -360,30 +360,28 @@ void showDragDetailPesanan(
                                 borderRadius: BorderRadius.circular(6),
                                 color: primaryColor,
                               ),
-                              child: Center(
-                                child: TextButton(
-                                  onPressed: () {
-                                    Get.off(
-                                      () => PesanPaketScreen(
-                                        paket: item.paket,
-                                        image: item2.image,
-                                        jumlahPaket: item.quantity.value,
-                                        keterangan: 'Tour Saja (Tanpa Hotel)',
-                                        tanggalPesan: 'DateTimeNow',
-                                        namaPemesan: user.nama,
-                                        nomerPemesan: user.nomorTelepon,
-                                        emailPemesan: user.email,
-                                        totalPrice:
-                                            controller.totalA.value.toString(),
-                                      ),
-                                    );
-                                  },
-                                  child: Text(
-                                    'Pesan',
-                                    style: whiteTextStyle.copyWith(
-                                      fontWeight: medium,
-                                      fontSize: 12,
+                              child: TextButton(
+                                onPressed: () {
+                                  Get.off(
+                                    () => PesanPaketScreen(
+                                      paket: item.paket,
+                                      image: item2.image,
+                                      jumlahPaket: item.quantity.value,
+                                      keterangan: 'Tour Saja (Tanpa Hotel)',
+                                      tanggalPesan: 'DateTimeNow',
+                                      namaPemesan: user.nama,
+                                      nomerPemesan: user.nomorTelepon,
+                                      emailPemesan: user.email,
+                                      totalPrice:
+                                          controller.totalA.value.toString(),
                                     ),
+                                  );
+                                },
+                                child: Text(
+                                  'Pesan',
+                                  style: whiteTextStyle.copyWith(
+                                    fontWeight: medium,
+                                    fontSize: 12,
                                   ),
                                 ),
                               ),

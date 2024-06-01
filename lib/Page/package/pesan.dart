@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:slicing/Page/package/detailPemesan.dart';
 import 'package:slicing/widgets/theme/theme.dart';
 
 class PesanPaketScreen extends StatelessWidget {
@@ -76,34 +79,39 @@ class PesanPaketScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 28,
-                          width: 34,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            image: DecorationImage(
-                              image: AssetImage('$image'),
-                              fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Get.back(canPop: true);
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 28,
+                            width: 34,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              image: DecorationImage(
+                                image: AssetImage('$image'),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        ),
-                        Gap(6),
-                        Expanded(
-                          child: Text(
-                            'paket Wisata $paket',
-                            style: blackTextStyle.copyWith(
-                              fontWeight: medium,
-                              fontSize: 12,
+                          Gap(6),
+                          Expanded(
+                            child: Text(
+                              'paket Wisata $paket',
+                              style: blackTextStyle.copyWith(
+                                fontWeight: medium,
+                                fontSize: 12,
+                              ),
                             ),
                           ),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 12,
-                        ),
-                      ],
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            size: 12,
+                          ),
+                        ],
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
@@ -193,69 +201,74 @@ class PesanPaketScreen extends StatelessWidget {
                         ),
                       ),
                       Gap(10),
-                      Container(
-                        height: 88,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
-                          color: whiteColor1,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              offset: Offset(0, 4),
-                              blurRadius: 6,
-                              spreadRadius: 0,
-                            ),
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              offset: Offset(0, 0),
-                              blurRadius: 6,
-                              spreadRadius: 0,
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 10,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                namaPemesan,
-                                style: blackTextStyle.copyWith(
-                                  fontWeight: bold,
-                                  fontSize: 12,
-                                ),
+                      GestureDetector(
+                        onTap: () {
+                          showDetailPemesan(context);
+                        },
+                        child: Container(
+                          height: 88,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            color: whiteColor1,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                offset: Offset(0, 4),
+                                blurRadius: 6,
+                                spreadRadius: 0,
                               ),
-                              Gap(4),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    nomerPemesan,
-                                    style: blackTextStyle.copyWith(
-                                      fontWeight: medium,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: 12,
-                                  ),
-                                ],
-                              ),
-                              Gap(4),
-                              Text(
-                                emailPemesan,
-                                style: greyTextStyle.copyWith(
-                                  fontWeight: medium,
-                                  fontSize: 12,
-                                ),
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                offset: Offset(0, 0),
+                                blurRadius: 6,
+                                spreadRadius: 0,
                               ),
                             ],
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 10,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  namaPemesan,
+                                  style: blackTextStyle.copyWith(
+                                    fontWeight: bold,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                Gap(4),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      nomerPemesan,
+                                      style: blackTextStyle.copyWith(
+                                        fontWeight: medium,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: 12,
+                                    ),
+                                  ],
+                                ),
+                                Gap(4),
+                                Text(
+                                  emailPemesan,
+                                  style: greyTextStyle.copyWith(
+                                    fontWeight: medium,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -297,17 +310,15 @@ class PesanPaketScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(6),
                           color: primaryColor,
                         ),
-                        child: Center(
-                          child: TextButton(
-                            onPressed: () {
-                              // Tambahkan logika untuk melanjutkan pembayaran
-                            },
-                            child: Text(
-                              'Lanjutkan Pembayaran',
-                              style: whiteTextStyle.copyWith(
-                                fontWeight: medium,
-                                fontSize: 12,
-                              ),
+                        child: TextButton(
+                          onPressed: () {
+                            // Tambahkan logika untuk melanjutkan pembayaran
+                          },
+                          child: Text(
+                            'Lanjutkan Pembayaran',
+                            style: whiteTextStyle.copyWith(
+                              fontWeight: medium,
+                              fontSize: 12,
                             ),
                           ),
                         ),

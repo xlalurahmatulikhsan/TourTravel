@@ -109,7 +109,7 @@ class Login extends StatelessWidget {
                   onPressed: () {
                     if (controller.nomor.text == '' &&
                         controller.pass.text == '') {
-                      Get.snackbar("Oi Isi dlu Kimak", "Cahocibeeee");
+                      Get.snackbar("Peringatan", "Tidak Boleh Kosong");
                       return;
                     } else {
                       Get.off(() => Home());

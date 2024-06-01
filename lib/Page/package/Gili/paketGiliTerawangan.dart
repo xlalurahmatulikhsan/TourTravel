@@ -428,7 +428,6 @@ class WisataPage extends StatelessWidget {
                   Gap(6),
                   Obx(() {
                     final items = controller.paketGiliTerawangan;
-
                     return SizedBox(
                       height: 100,
                       child: ListView.builder(
