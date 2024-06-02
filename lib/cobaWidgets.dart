@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:slicing/widgets/theme/theme.dart';
+import 'package:slicing/shared/theme/theme.dart';
 
 class CounterWidget extends StatefulWidget {
   @override

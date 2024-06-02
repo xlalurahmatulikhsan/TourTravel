@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:slicing/Page/auth/login.dart';
-import 'package:slicing/Page/order_page.dart';
-import 'package:slicing/widgets/theme/theme.dart';
+import 'package:slicing/shared/theme/theme.dart';
+import 'package:slicing/views/pages/splash_page.dart';
 
-void main() {
+void main() async {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark));
   runApp(const MyApp());
 }
 
@@ -16,7 +20,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: primaryColor),
-      home: Order(),
+      home: Splash(),
     );
   }
 }
