@@ -3,18 +3,18 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:slicing/shared/theme/theme.dart';
 import 'package:slicing/views/navigations/main_navigation_view.dart';
-import 'package:slicing/views/package/detail.dart';
-import 'package:slicing/views/package/detailPesanan.dart';
 import 'package:slicing/controllers/controller.dart';
+import 'package:slicing/views/package/detailPaket.dart';
+import 'package:slicing/views/package/detailPesanan.dart';
 
-class WisataPage extends StatelessWidget {
+class PaketGiliTerawangan extends StatelessWidget {
   final PackageController controller = Get.put(PackageController());
   final ButtonController buttonController = Get.put(ButtonController());
 
   @override
   Widget build(BuildContext context) {
     final scroll = ScrollController();
-    // final item = controller.paketGiliTerawangan;
+    // final item = controller.paketWisata;
     return Scaffold(
       backgroundColor: whiteColor2,
       body: SingleChildScrollView(
@@ -84,10 +84,10 @@ class WisataPage extends StatelessWidget {
               ],
             ),
             Obx(() {
-              if (controller.destinasi.isEmpty) {
+              if (controller.paketWisata.isEmpty) {
                 return Center(child: Text('Tidak ada wisata tersedia.'));
               }
-              final item = controller.destinasi[0];
+              final item = controller.paketWisata[0];
               return Container(
                 width: double.infinity,
                 color: whiteColor1,
@@ -100,7 +100,7 @@ class WisataPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Paket Wisata ${item.namaTempat}',
+                        'Paket Wisata ${item.wisataName}',
                         style: blackTextStyle.copyWith(
                           fontWeight: semiBold,
                           fontSize: 16,
@@ -118,7 +118,7 @@ class WisataPage extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                item.averageRating.toString(),
+                                item.rating.toString(),
                                 style: blackTextStyle.copyWith(
                                   fontWeight: semiBold,
                                   fontSize: 14,
@@ -192,13 +192,14 @@ class WisataPage extends StatelessWidget {
             ),
             Obx(() {
               //deskripsi
-              if (controller.destinasi.isEmpty) {
+              if (controller.paketWisata.isEmpty) {
                 return Center(child: Text('Tidak ada wisata tersedia.'));
               }
-              final item = controller.destinasi[0];
+              final item = controller.paketWisata[0];
               return Container(
                 color: whiteColor1,
                 height: 300,
+                width: double.infinity,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 20,
@@ -282,7 +283,7 @@ class WisataPage extends StatelessWidget {
                 height: 100,
                 child: Obx(() {
                   if (controller.paketGiliTerawangan.isEmpty) {
-                    Text('paket Kosong');
+                    Text(' Kosong');
                   }
                   final items = controller.paketGiliTerawangan;
                   return ListView.builder(
@@ -358,12 +359,11 @@ class WisataPage extends StatelessWidget {
                                         controller.totalA.value = 0;
                                         item.quantity.value = 0;
                                         showDragDetailPesanan(
-                                          context,
-                                          item.paket,
-                                          item.price.toString(),
-                                          items.indexOf(item),
-                                          item.quantity,
-                                        );
+                                            context,
+                                            item.paket,
+                                            item.price.toString(),
+                                            index,
+                                            item.quantity);
                                       },
                                       child: Container(
                                         height: 28,
@@ -421,7 +421,7 @@ class WisataPage extends StatelessWidget {
                           ),
                         ),
                         Obx(() {
-                          final item = controller.destinasi[0];
+                          final item = controller.paketWisata[0];
                           return GestureDetector(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -429,7 +429,7 @@ class WisataPage extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      item.averageRating.toString(),
+                                      item.rating.toString(),
                                       style: blackTextStyle.copyWith(
                                         fontWeight: medium,
                                         fontSize: 24,
@@ -447,18 +447,17 @@ class WisataPage extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          item.ekspresi,
-                                          style: blackTextStyle.copyWith(
-                                            fontWeight: medium,
-                                            fontSize: 12,
-                                          ),
-                                        ),
+                                        // Text(
+                                        //   item.,
+                                        //   style: blackTextStyle.copyWith(
+                                        //     fontWeight: medium,
+                                        //     fontSize: 12,
+                                        //   ),
+                                        // ),
                                         Obx(() {
-                                          final item =
-                                              controller.paketGiliTerawangan;
+                                          final reviewer = controller.reviewer;
                                           return Text(
-                                            'Dari ${item.length} Review', //tergantung banyak reviewnya
+                                            'Dari ${reviewer.length} Review', //tergantung banyak reviewnya
                                             style: greyTextStyle.copyWith(
                                               fontWeight: regular,
                                               fontSize: 10,
@@ -482,15 +481,17 @@ class WisataPage extends StatelessWidget {
                   ),
                   Gap(6),
                   Obx(() {
-                    final items = controller.paketGiliTerawangan;
+                    final reviwes = controller.reviewer;
+                    final items = controller.paketWisata;
 
                     return SizedBox(
                       height: 100,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: items.length,
+                        itemCount: reviwes.length,
                         itemBuilder: (context, index) {
                           final item = items[index];
+                          final reviewer = reviwes[index];
                           final now = DateTime.now();
                           return Padding(
                             padding: EdgeInsets.only(
@@ -517,9 +518,7 @@ class WisataPage extends StatelessWidget {
                                           bottomLeft: Radius.circular(8),
                                         ),
                                         image: DecorationImage(
-                                          image: AssetImage(
-                                            item.review.image,
-                                          ),
+                                          image: AssetImage(item.image),
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -538,7 +537,7 @@ class WisataPage extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   Text(
-                                                    item.review.rating
+                                                    reviewer.ratingView
                                                         .toString(),
                                                     style:
                                                         blackTextStyle.copyWith(
@@ -566,19 +565,16 @@ class WisataPage extends StatelessWidget {
                                               ),
                                             ],
                                           ),
-                                          Obx(() {
-                                            final item = controller.user[index];
-                                            return Text(
-                                              item.nama,
-                                              style: blackTextStyle.copyWith(
-                                                fontWeight: medium,
-                                                fontSize: 12,
-                                              ),
-                                            );
-                                          }),
+                                          Text(
+                                            reviewer.user.first.nama,
+                                            style: blackTextStyle.copyWith(
+                                              fontWeight: medium,
+                                              fontSize: 12,
+                                            ),
+                                          ),
                                           Gap(6),
                                           Text(
-                                            item.review.saran,
+                                            reviewer.saran,
                                             style: greyTextStyle.copyWith(
                                               fontWeight: regular,
                                               fontSize: 12,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:slicing/views/package/order.dart';
+// import 'package:slicing/views/package/order.dart';
 import 'package:slicing/controllers/controller.dart';
 import 'package:slicing/shared/theme/theme.dart';
 
@@ -48,23 +48,23 @@ class Order extends StatelessWidget {
   Widget _buildPendingOrders() {
     return SingleChildScrollView(
       child: Obx(() {
-        final item = controller.paketGiliTerawangan[0];
-        final item2 = controller.destinasi[0];
+        // final item = controller.paketWisata[0];
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Gap(20),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              child: MyOrder(
-                  image: item2.image,
-                  paket: item.paket,
-                  jumlahPaket: item.quantity.value,
-                  keterangan: 'Tour saja',
-                  tanggalPesan: '24 mei'),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(
+            //     horizontal: 20,
+            //   ),
+            //   child: MyOrder(
+            //       image: item.image,
+            //       paket: item.paket,
+            //       jumlahPaket: item.quantity.value,
+            //       keterangan: 'Tour saja',
+            //       tanggalPesan: '24 mei'),
+            // ),
           ],
         );
       }),

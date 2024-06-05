@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(14),
                             image: DecorationImage(
-                              image: NetworkImage(image.image),
+                              image: AssetImage(image.image),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -132,9 +132,9 @@ class _HomeState extends State<Home> {
             ),
             const Gap(10),
             Obx(() {
-              final items = controller.destinasi;
+              final items = controller.paketWisata;
               return SizedBox(
-                height: 200,
+                height: 190,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: items.length,
@@ -148,14 +148,14 @@ class _HomeState extends State<Home> {
                       ),
                       child: GestureDetector(
                         onTap: () {
-                          if (item.namaTempat == 'Gili Terawangan') {
-                            Get.to(() => WisataPage());
+                          if (item.wisataName == 'Gili Terawangan') {
+                            Get.to(() => PaketGiliTerawangan());
                           } else {
                             const SnackBar(content: Text('page ini kosong'));
                           }
                         },
                         child: Container(
-                          width: 180,
+                          width: 190,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors
@@ -204,7 +204,7 @@ class _HomeState extends State<Home> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          item.namaTempat,
+                                          item.wisataName,
                                           style: blackTextStyle.copyWith(
                                             fontWeight: medium,
                                             fontSize: 12,
@@ -215,7 +215,7 @@ class _HomeState extends State<Home> {
                                             Icon(Icons.star, size: 12),
                                             Gap(6),
                                             Text(
-                                              item.averageRating.toString(),
+                                              item.rating.toString(),
                                               style: blackTextStyle.copyWith(
                                                 fontWeight: medium,
                                                 fontSize: 12,
@@ -275,9 +275,9 @@ class _HomeState extends State<Home> {
             ),
             Gap(10),
             Obx(() {
-              final items = controller.destinasi;
+              final items = controller.paketWisata;
               return SizedBox(
-                height: 200,
+                height: 190,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: items.length,
@@ -291,14 +291,15 @@ class _HomeState extends State<Home> {
                       ),
                       child: GestureDetector(
                         onTap: () {
-                          if (item.namaTempat == 'Gili Terawangan') {
-                            Get.off(() => WisataPage());
+                          if (item.wisataName == 'Gili Terawangan') {
+                            Get.off(() => PaketGiliTerawangan());
                           } else {
                             const SnackBar(content: Text('page ini kosong'));
                           }
                         },
                         child: Container(
-                          width: 180,
+                          width: 190,
+                          // height: 170,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors
@@ -347,7 +348,7 @@ class _HomeState extends State<Home> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          item.namaTempat,
+                                          item.wisataName,
                                           style: blackTextStyle.copyWith(
                                             fontWeight: medium,
                                             fontSize: 12,
@@ -358,7 +359,7 @@ class _HomeState extends State<Home> {
                                             Icon(Icons.star, size: 12),
                                             Gap(6),
                                             Text(
-                                              item.averageRating.toString(),
+                                              item.rating.toString(),
                                               style: blackTextStyle.copyWith(
                                                 fontWeight: medium,
                                                 fontSize: 12,
