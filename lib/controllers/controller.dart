@@ -1,163 +1,214 @@
 import 'package:get/get.dart';
-import 'package:slicing/models/item.dart';
+import 'package:slicing/models/banner.dart';
 import 'package:slicing/models/user.dart';
-import 'package:slicing/models/wisata.dart';
+import 'package:slicing/models/wisata.dart'; // Import Wisata and Paket classes
 
 class PackageController extends GetxController {
-  var paketGiliTerawangan = <Item>[].obs;
+  var paketWisata = <Wisata>[].obs; // List observabel dari kelas Wisata
   var totalA = 0.0.obs;
-  var destinasi = <Wisata>[].obs;
   var slider = <Banner>[].obs;
+  var reviewer = <Review>[].obs;
   var user = <User>[].obs;
+  var paketGiliTerawangan = <Paket>[].obs;
+  var paketGiliAir = <Paket>[].obs;
+  var paketGiliMeno = <Paket>[].obs;
 
   @override
   void onInit() {
     super.onInit();
-    paketGiliTerawangan.addAll([
-      Item(
-        'Gili Terawangan 3 Hari 2 Malam',
-        3000000,
-        Review(
-          'bagus',
-          4.8,
-          'images/image_1.jpg',
-          '''Lorem ipsum dolor sit amet,
-adipiscing elit.''',
-        ),
-      ),
-      Item(
-        'Gili Terawangan 2 Hari 1 Malam',
-        2000000,
-        Review(
-          'bagus',
-          4.6,
-          'images/image_1.jpg',
-          '''Lorem ipsum dolor sit amet,
-adipiscing elit.''',
-        ),
-      ),
-      Item(
-        'Gili Terawangan 1 Hari',
-        1000000,
-        Review(
-          'bagus',
-          4.9,
-          'images/image_1.jpg',
-          '''Lorem ipsum dolor sit amet,
-adipiscing elit.''',
-        ),
-      ),
+
+    // Tambahkan item-slider ke dalam list slider
+    slider.addAll([
+      Banner('images/image_1.jpg'),
+      Banner('images/image_2.jpg'),
+      Banner('images/image_3.jpg'),
     ]);
 
-    destinasi.addAll([
+    // Definisikan paket untuk setiap Wisata
+    paketGiliTerawangan.addAll([
+      Paket('Gili Terawangan 3 Hari 2 Malam', 3200000),
+      Paket('Gili Terawangan 2 Hari 1 Malam', 2000000),
+      Paket('Gili Terawangan 1 Hari', 1000000),
+    ]);
+    paketGiliAir.addAll([
+      Paket('Gili Air 3 Hari 2 Malam', 2500000),
+      Paket('Gili Air 2 Hari 1 Malam', 1500000),
+      Paket('Gili Air 1 Hari', 800000),
+    ]);
+    paketGiliMeno.addAll([
+      Paket('Gili Meno 3 Hari 2 Malam', 2400000),
+      Paket('Gili Meno 2 Hari 1 Malam', 1500000),
+      Paket('Gili Meno 1 Hari', 700000),
+    ]);
+
+    // Tambahkan data-data wisata ke dalam list paketWisata
+    paketWisata.addAll([
       Wisata(
         'Gili Terawangan',
         'images/image_1.jpg',
+        4.7,
         'Lombok Utara',
-        4.9,
         '''Paket Wisata Gili Trawangan adalah pilihan yang sempurna bagi anda yang ingin menikmati pengalaman liburan yang penuh keindahan dan aktivitas bahari menyenangkan.
 Mulai dari menginap di Gili Trawangan dan merasakan suasananya yang hidup, hingga menjelajahi kekayaan bawah laut melalui snorkeling di perairan Gili Trawangan, Gili Air, dan Gili Meno.
 Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara total dan maksimal bersama MYGUIDE.''',
-        'Bagus',
       ),
       Wisata(
         'Gili Air',
-        'images/image_1.jpg',
-        'Lombok Utara',
+        'images/image_2.jpg',
         4.8,
-        '''Paket Wisata Gili Trawangan adalah pilihan yang sempurna bagi anda yang ingin menikmati pengalaman liburan yang penuh keindahan dan aktivitas bahari menyenangkan.
-Mulai dari menginap di Gili Trawangan dan merasakan suasananya yang hidup, hingga menjelajahi kekayaan bawah laut melalui snorkeling di perairan Gili Trawangan, Gili Air, dan Gili Meno.
-Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara total dan maksimal bersama MYGUIDE.''',
-        'Bagus',
+        'Lombok Utara',
+        'description',
       ),
       Wisata(
-        'Gili Kondo',
-        'images/image_1.jpg',
-        'Lombok Utara',
-        4.7,
-        '''Paket Wisata Gili Trawangan adalah pilihan yang sempurna bagi anda yang ingin menikmati pengalaman liburan yang penuh keindahan dan aktivitas bahari menyenangkan.
-Mulai dari menginap di Gili Trawangan dan merasakan suasananya yang hidup, hingga menjelajahi kekayaan bawah laut melalui snorkeling di perairan Gili Trawangan, Gili Air, dan Gili Meno.
-Dapatkan pengalaman liburan yang tak terlupakan dan nikmati setiap momen secara total dan maksimal bersama MYGUIDE.''',
-        'Bagus',
+        'Gili Meno',
+        'images/image_3.jpg',
+        4.3,
+        'Sumbawa',
+        'description',
       ),
     ]);
 
-    slider.addAll([
-      Banner(
-        'https://i.pinimg.com/736x/a0/33/a6/a033a6d215cfdc41dbfd92c5ac5dc8cf.jpg',
+    reviewer.addAll([
+      Review(
+        [
+          User(
+            'adriyan',
+            '08743768457',
+            'adriyan@gamil.com',
+            '112233',
+          ),
+        ],
+        'bagus',
+        4.5,
+        DateTime(2023, 10, 13),
+        'Kelas Abangku',
       ),
-      Banner(
-        'https://i.pinimg.com/736x/a0/33/a6/a033a6d215cfdc41dbfd92c5ac5dc8cf.jpg',
+      Review(
+        [
+          User(
+            'Iksan',
+            '08743768457',
+            'Iksan@gamil.com',
+            '112233',
+          ),
+        ],
+        'bagus',
+        4.5,
+        DateTime(2023, 10, 13),
+        'Kelas Abangku',
       ),
-      Banner(
-        'https://i.pinimg.com/736x/a0/33/a6/a033a6d215cfdc41dbfd92c5ac5dc8cf.jpg',
-      ),
+      Review(
+        [
+          User(
+            'ardika',
+            '08743768457',
+            'ardika@gamil.com',
+            '112233',
+          ),
+        ],
+        'bagus',
+        4.5,
+        DateTime(2023, 10, 13),
+        'Kelas Abangku',
+      )
     ]);
 
-    user([
+    user.addAll([
+      User(
+        'ardika',
+        '08743768457',
+        'ardika@gamil.com',
+        '112233',
+      ),
       User(
         'Iksan',
-        '08675654267',
+        '08743768457',
         'Iksan@gamil.com',
-        '111222333',
+        '112233',
       ),
       User(
-        'Adriyan',
-        '0867326143',
-        'Adriyan@gamil.com',
-        '222333444',
-      ),
-      User(
-        'Ardika',
-        '0862375428',
-        'Ardika@gamil.com',
-        '333444555',
+        'adriyan',
+        '08743768457',
+        'adriyan@gamil.com',
+        '112233',
       ),
     ]);
-
-    // ever(paketGiliTerawangan, (_) => calculateTotalA());
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    paketGiliTerawangan.clear();
+    paketWisata.clear();
     super.dispose();
   }
 
-  void incrementQuantity(int index) {
-    paketGiliTerawangan[index].quantity.value++;
-    calculateTotalA();
-  }
+  // void incrementQuantity(int wisataIndex, int Index) {
+  //   paketWisata[wisataIndex].quantity.value++;
+  //   calculateTotalA();
+  // }
 
-  void decrementQuantity(int index) {
-    if (paketGiliTerawangan[index].quantity.value > 0) {
-      paketGiliTerawangan[index].quantity.value--;
+  // void decrementQuantity(int wisataIndex, int Index) {
+  //   if (paketWisata[wisataIndex].quantity.value > 0) {
+  //     paketWisata[wisataIndex].quantity.value--;
+  //     calculateTotalA();
+  //   }
+  // }
+
+  // void calculateTotalA() {
+  //   totalA.value = 0.0;
+  //   for (var wisata in paketWisata) {
+  //     if (wisata.wisataName == 'Gili Terawangan') {
+  //       totalA.value += paketGiliTerawangan.fold(
+  //           0.0, (sum, paket) => sum + (paket.price * paket.quantity.value));
+  //     } else if (wisata.wisataName == 'Gili Air') {
+  //       totalA.value += paketGiliAir.fold(
+  //           0.0, (sum, paket) => sum + (paket.price * paket.quantity.value));
+  //     } else if (wisata.wisataName == 'Gili Meno') {
+  //       totalA.value += paketGiliMeno.fold(
+  //           0.0, (sum, paket) => sum + (paket.price * paket.quantity.value));
+  //     }
+  //   }
+  // }
+
+  // void selectPaket(int wisataIndex, int Index) {
+  //   if (paketWisata[wisataIndex].wisataName == 'Gili Terawangan') {
+  //     paketGiliTerawangan[wisataIndex].quantity.value++;
+  //   } else if (paketWisata[wisataIndex].wisataName == 'Gili Air') {
+  //     paketGiliAir[wisataIndex].quantity.value++;
+  //   } else if (paketWisata[wisataIndex].wisataName == 'Gili Meno') {
+  //     paketGiliMeno[wisataIndex].quantity.value++;
+  //   }
+  //   calculateTotalA();
+  // }
+  void incrementQuantity(int Index) {
+    if (Index >= 0 && Index < paketGiliTerawangan.length) {
+      paketGiliTerawangan[Index].quantity.value++;
       calculateTotalA();
     }
   }
 
+  void decrementQuantity(int Index) {
+    if (Index >= 0 && Index < paketGiliTerawangan.length) {
+      if (paketGiliTerawangan[Index].quantity.value > 0) {
+        paketGiliTerawangan[Index].quantity.value--;
+        calculateTotalA();
+      }
+    }
+  }
+
   void calculateTotalA() {
-    totalA.value = paketGiliTerawangan.fold(
-        0.0, (sum, item) => sum + (item.price * item.quantity.value));
+    totalA.value = paketGiliTerawangan.fold(0.0, (sum, paket) {
+      return sum + (paket.price * paket.quantity.value);
+    });
+  }
+
+  void selectPaket(int Index) {
+    if (Index >= 0 && Index < paketGiliTerawangan.length) {
+      paketGiliTerawangan[Index].quantity.value++;
+      calculateTotalA();
+    }
   }
 }
 
-//  void inc(int index) {
-//     count.value++;
-//     calculateTotalA(index);
-//   }
-
-//   void dec(int index) {
-//     if (count.value > 0) {
-//       count.value--;
-//       calculateTotalA(index);
-//     }
-//   }
-
-//   void calculateTotalA(int index) {
-//     totalA.value = count.value * index;
-//   }
 class ButtonController extends GetxController {
   var selectedIndex = 0.obs;
   final Map<int, double> scrollPositions = {

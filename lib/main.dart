@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:slicing/shared/theme/theme.dart';
-import 'package:slicing/views/pages/splash_page.dart';
+import 'package:slicing/views/navigations/main_navigation_view.dart';
+// import 'package:slicing/views/pages/home_page.dart';
+// import 'package:slicing/views/pages/splash_page.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: primaryColor),
-      home: const Splash(),
+      home: MainNavigationView(),
     );
   }
 }

@@ -9,6 +9,7 @@ const Color bgColor1 = Color(0xff222831);
 const Color bgColor2 = Color(0xff31363F);
 const Color whiteColor1 = Color(0xffFFFFFF);
 const Color whiteColor2 = Color(0xffEEF0E5);
+const Color whiteGrey = Color(0xffF5F7F8);
 const Color blackColor = Color(0xff181A20);
 const Color greyColor = Color(0xff999999);
 
