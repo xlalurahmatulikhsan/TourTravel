@@ -134,7 +134,7 @@ class _HomeState extends State<Home> {
             Obx(() {
               final items = controller.paketWisata;
               return SizedBox(
-                height: 190,
+                height: 170,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: items.length,
@@ -155,7 +155,7 @@ class _HomeState extends State<Home> {
                           }
                         },
                         child: Container(
-                          width: 190,
+                          width: 170,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors
@@ -179,7 +179,7 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: 128,
+                                height: 110,
                                 decoration: BoxDecoration(
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(10),
@@ -193,11 +193,13 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                               ),
-                              Gap(14),
+                              Gap(10),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 8),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
                                       mainAxisAlignment:
@@ -277,7 +279,7 @@ class _HomeState extends State<Home> {
             Obx(() {
               final items = controller.paketWisata;
               return SizedBox(
-                height: 190,
+                height: 170,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: items.length,
@@ -298,7 +300,7 @@ class _HomeState extends State<Home> {
                           }
                         },
                         child: Container(
-                          width: 190,
+                          width: 170,
                           // height: 170,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -323,7 +325,7 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                height: 128,
+                                height: 110,
                                 decoration: BoxDecoration(
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(10),
