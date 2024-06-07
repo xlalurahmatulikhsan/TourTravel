@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:slicing/controllers/radioController.dart';
 
 import 'package:slicing/shared/theme/theme.dart';
 
-void showDetailPemesan(BuildContext context) {
+void showDetailPemesan(BuildContext context, String email) {
+  final RadioController controller = Get.put(RadioController());
+
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.transparent,
@@ -60,14 +64,49 @@ void showDetailPemesan(BuildContext context) {
                           ),
                         ),
                         Gap(14),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text('laki'),
-                            Text('perempuan'),
-                            Text('tuan'),
-                          ],
-                        ),
+                        Obx(() {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Row(
+                                children: [
+                                  Radio<int>(
+                                    value: 1,
+                                    groupValue: controller.selectedValue.value,
+                                    onChanged: (int? value) {
+                                      controller.setSelectedValue(value!);
+                                    },
+                                  ),
+                                  Text(
+                                    'Laki-Laki',
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: medium,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Radio<int>(
+                                    value: 2,
+                                    groupValue: controller.selectedValue.value,
+                                    onChanged: (int? value) {
+                                      controller.setSelectedValue(value!);
+                                    },
+                                  ),
+                                  Text(
+                                    'Perempuan',
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: medium,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        }),
                         Gap(14),
                         Text(
                           'Nama Lengkap',
@@ -133,7 +172,7 @@ void showDetailPemesan(BuildContext context) {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 10),
                             child: Text(
-                              'Email Sudah Di isi',
+                              email,
                               style: greyTextStyle.copyWith(
                                 fontWeight: medium,
                                 fontSize: 12,
