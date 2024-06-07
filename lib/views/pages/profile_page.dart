@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:slicing/services/auth_service.dart';
 import 'package:slicing/shared/theme/theme.dart';
 import 'package:slicing/views/auth/login.dart';
+import 'package:slicing/views/pages/editProfile.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -100,6 +101,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                   fontSize: 12,
                                 ),
                               ),
+                              onTap: () {
+                                Get.to(() => EditProfile());
+                              },
                             )
                           ],
                         ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:slicing/views/package/Gili/paketGiliTerawangan.dart';
+import 'package:slicing/views/pages/chat_page.dart';
 import 'package:slicing/views/widgets/form_costum.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:slicing/shared/theme/theme.dart';
@@ -43,16 +44,19 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   const Gap(14),
-                  const Row(
+                  Row(
                     children: [
                       Expanded(child: FormSearch()),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Icon(
-                        Icons.mark_email_unread_outlined,
-                        color: whiteColor1,
-                        size: 24,
+                      Gap(10),
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(() => ChatPage());
+                        },
+                        child: Icon(
+                          Icons.mark_email_unread_outlined,
+                          color: whiteColor1,
+                          size: 24,
+                        ),
                       ),
                     ],
                   ),
