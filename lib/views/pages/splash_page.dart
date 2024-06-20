@@ -19,7 +19,7 @@ class _SplashState extends State<Splash> {
     Timer(
       const Duration(seconds: 2),
       () {
-        Get.off(() => LoginPage());
+        Get.off(() => const LoginPage());
       },
     );
   }

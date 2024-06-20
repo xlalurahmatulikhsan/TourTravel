@@ -1,31 +1,37 @@
+import 'package:get/get.dart';
+import 'package:slicing/models/user.dart';
+
 class Wisata {
-  String namaTempat;
+  String wisataName;
   String image;
+  double rating;
   String lokasi;
-  double averageRating;
   String deskripsi;
-  String ekspresi;
+  var quantity = 0.obs;
 
   Wisata(
-    this.namaTempat,
+    this.wisataName,
     this.image,
+    this.rating,
     this.lokasi,
-    this.averageRating,
     this.deskripsi,
-    this.ekspresi,
   );
 }
 
+class Paket {
+  String paket;
+  int price;
+  var quantity = 0.obs;
+
+  Paket(this.paket, this.price);
+}
+
 class Review {
-  String masukan;
-  double rating;
-  String image;
+  List<User> user;
+  String word;
+  double ratingView;
+  DateTime tanggal;
   String saran;
 
-  Review(
-    this.masukan,
-    this.rating,
-    this.image,
-    this.saran,
-  );
+  Review(this.user, this.word, this.ratingView, this.tanggal, this.saran);
 }

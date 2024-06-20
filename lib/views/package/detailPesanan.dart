@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:slicing/views/package/pesan.dart';
 import 'package:slicing/shared/theme/theme.dart';
 import 'package:slicing/controllers/controller.dart';
+import 'package:slicing/views/package/pesan.dart';
 
 void showDragDetailPesanan(
   context,
   String paket,
-  String totalPrice,
+  String price,
   int index,
   RxInt quantity,
 ) {
@@ -203,7 +203,7 @@ void showDragDetailPesanan(
                                 Row(
                                   children: [
                                     Text(
-                                      'Mulai Dari IDR $totalPrice',
+                                      'Mulai Dari IDR $price',
                                       style: greyTextStyle.copyWith(
                                         fontWeight: medium,
                                         fontSize: 12,
@@ -251,7 +251,7 @@ void showDragDetailPesanan(
                                   Row(
                                     children: [
                                       Text(
-                                        'IDR ${totalPrice}.00',
+                                        'IDR $price',
                                         style: redTextStyle.copyWith(
                                           fontWeight: medium,
                                           fontSize: 12,
@@ -349,7 +349,7 @@ void showDragDetailPesanan(
                           Gap(6),
                           Obx(() {
                             final item = controller.paketGiliTerawangan[index];
-                            final item2 = controller.destinasi[index];
+                            final item2 = controller.paketWisata[index];
                             final user = controller.user[index];
                             return Container(
                               height: 40,

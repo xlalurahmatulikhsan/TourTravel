@@ -14,7 +14,7 @@ class FormCostum extends StatelessWidget {
 
   const FormCostum({
     super.key,
-    required this.onChanged,
+    this.onChanged,
     required this.title,
     required this.hintText,
     required this.prefixIcon,
@@ -75,7 +75,9 @@ class FormCostum extends StatelessWidget {
 }
 
 class FormSearch extends StatelessWidget {
-  const FormSearch({super.key});
+  const FormSearch({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +106,93 @@ class FormSearch extends StatelessWidget {
           size: 20,
         ),
       ),
+    );
+  }
+}
+
+class GreenForm extends StatelessWidget {
+  final Function(String)? onChanged;
+  final String title;
+  final String hintText;
+  final Widget? prefixIcon;
+
+  const GreenForm(
+      {super.key,
+      this.onChanged,
+      required this.title,
+      required this.hintText,
+      this.prefixIcon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: blackTextStyle.copyWith(
+            fontWeight: medium,
+            fontSize: 12,
+          ),
+        ),
+        const Gap(6),
+        TextFormField(
+          onChanged: onChanged,
+          decoration: InputDecoration(
+            constraints: BoxConstraints(
+              maxHeight: 40,
+            ),
+            hintText: hintText,
+            hintStyle: greyTextStyle.copyWith(
+              fontWeight: regular,
+              fontSize: 12,
+            ),
+            prefixIcon: prefixIcon,
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: primaryColor,
+                width: 2,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: primaryColor,
+                width: 2,
+              ),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: primaryColor,
+                width: 2,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: primaryColor,
+                width: 2,
+              ),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: primaryColor,
+                width: 2,
+              ),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: primaryColor,
+                width: 2,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

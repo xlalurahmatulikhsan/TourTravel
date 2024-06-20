@@ -1,10 +1,15 @@
+// import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:slicing/views/navigations/main_navigation_view.dart';
+// import 'package:slicing/views/navigations/qnavigation.dart';
 import 'package:slicing/views/package/detailPemesan.dart';
 import 'package:slicing/shared/theme/theme.dart';
+// import 'package:slicing/views/pages/order_page.dart';
 
 class PesanPaketScreen extends StatelessWidget {
   final String paket;
@@ -203,7 +208,10 @@ class PesanPaketScreen extends StatelessWidget {
                       Gap(10),
                       GestureDetector(
                         onTap: () {
-                          showDetailPemesan(context);
+                          showDetailPemesan(
+                            context,
+                            emailPemesan,
+                          );
                         },
                         child: Container(
                           height: 88,
@@ -312,7 +320,7 @@ class PesanPaketScreen extends StatelessWidget {
                         ),
                         child: TextButton(
                           onPressed: () {
-                            // Tambahkan logika untuk melanjutkan pembayaran
+                            Get.off(() => MainNavigationView(), arguments: 1);
                           },
                           child: Text(
                             'Lanjutkan Pembayaran',

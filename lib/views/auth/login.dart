@@ -95,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                         return null;
                       },
                       title: "Password",
-                      hintText: '********',
+                      hintText: 'Masukan Password',
                       prefixIcon: Icons.lock,
                       obscureText: (passwordVisible),
                       suffixIcon: IconButton(
